@@ -1,0 +1,38 @@
+Apartado 3
+Ejecuta el programa con distintos tipos de parámetros, sin parámetros, o con más de uno. ¿Qué sucede?
+
+Si ejecutamos con varios parametros:
+
+java LongitudPalabras perro gato sol
+Las longitudes de las palabras son:
+- perro (5 caracteres).
+- gato (4 caracteres).
+- sol (3 caracteres).
+
+Palabras almacenadas: [perro, gato, sol]
+Longitud de 'No_almacenada': -1
+
+Estos parámetros se convierten en palabras se calculan su longitudes y se almacenan en el objeto LongitudPalabras.
+El programa imprime estas longitudes, las palabras almacenadas y la longitud de una palabra específica ("No_almacenada" en este caso).
+
+Si no pasamos ninguna palabra como parametro obtenemos lo siguiente:
+
+java LongitudPalabras
+Se espera al menos una palabra como parametro.
+
+Apartado 4
+
+Contesta a las siguientes preguntas:
+- ¿Qué estrategia has seguido para el cálculo de las frecuencias? ¿Qué otras alternativas se te ocurren para ese
+cálculo? Indica sus ventajas e inconvenientes.
+
+La estrategia que hemos seguido para calcular las frencuencias ha sido iterar en todas las longitudes de las diferentes palabras y contar cuantas veces sale
+cada longitud en el conjunto de longitudes de las palabras. Con el método getFrecuencia.
+
+Otra alternativa sería
+
+
+
+- ¿Cómo implementarías un método getLongitudesRepetidas que devuelva las longitudes de las palabras que se
+repiten al menos una vez? Con las palabras codigo casa gato, la salida debería ser únicamente la longitud 4 letras,
+que es la única que se repite.
