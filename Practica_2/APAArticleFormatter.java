@@ -6,6 +6,7 @@ public class APAArticleFormatter extends ArticleFormatter {
 	 * 
 	 * Last name, Initials. (Year). Article title. Journal Name, Volume(Issue).
 	 **/
+
 	
 	public APAArticleFormatter(){
 		super("APA");
