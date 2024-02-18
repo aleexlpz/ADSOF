@@ -1,16 +1,27 @@
 import java.util.*;
 /**
 * Esta clase calcula la longitudes de palabras y las almacena en un mapa.
+*
+* @author Alejandro López Martínez, Sofia García Heras
+*
 */
 public class LongitudPalabras {
 
     private Map<String, Integer> palabras = new LinkedHashMap<>();
 
-
+    /**
+     * Devuelve las longitudes únicas de las palabras.
+     * @return conjunto de longitudes únicas.
+     */
     public Set<Integer> getLongitudesUnicas() {
         return new HashSet<>(this.palabras.values());
     }
-
+    /**
+     * Devuelve la frecuencia de palabras de una longitud dada.
+     * 
+     * @param longitud Longitud de las palabras.
+     * @return frecuencia de palabras de esa longitud.
+     */
     public int getFrecuencia(int longitud) {
         int frecuencia = 0;
         for (int len : this.palabras.values()) {
@@ -20,6 +31,7 @@ public class LongitudPalabras {
         }
         return frecuencia;
     }
+
     /**
     * Constructor con las palabras.
     * @param palabras Palabras de las que se quiere calcular las longitudes.

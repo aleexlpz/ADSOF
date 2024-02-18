@@ -26,13 +26,18 @@ Contesta a las siguientes preguntas:
 - ¿Qué estrategia has seguido para el cálculo de las frecuencias? ¿Qué otras alternativas se te ocurren para ese
 cálculo? Indica sus ventajas e inconvenientes.
 
-La estrategia que hemos seguido para calcular las frencuencias ha sido iterar en todas las longitudes de las diferentes palabras y contar cuantas veces sale
-cada longitud en el conjunto de longitudes de las palabras. Con el método getFrecuencia.
+La estrategia que hemos seguido para calcular las frencuencias ha sido iterar en todas las longitudes de las 
+diferentes palabras y contar cuantas veces sale cada longitud en el conjunto de longitudes de las palabras. 
 
-Otra alternativa sería
-
+Otra estrategia sería recorrer el mapa de palabras y almacenar en un mapa de frecuencias la longitud de 
+la palabra y su frecuencia. De esta forma, se podría obtener la frecuencia de una longitud en tiempo 
+constante.
 
 
 - ¿Cómo implementarías un método getLongitudesRepetidas que devuelva las longitudes de las palabras que se
 repiten al menos una vez? Con las palabras codigo casa gato, la salida debería ser únicamente la longitud 4 letras,
 que es la única que se repite.
+
+Para implementar el método getLongitudesRepetidas, se puede hacer uso de un conjunto para almacenar las longitudes que 
+se repiten. Se recorren las longitudes de las palabras y se comprueba si ya se ha añadido al conjunto. Si no se ha 
+añadido, se añade. Si ya se ha añadido, se añade al conjunto de longitudes repetidas.
