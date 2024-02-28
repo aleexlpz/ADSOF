@@ -1,4 +1,10 @@
 import java.util.List;
+/**
+ * @author Sofía García Heras
+ * @author Alejandro Lopez Martinez
+ * @version 1.0
+ * @date 2024-02-27
+ */
 
 public class Main {
 
