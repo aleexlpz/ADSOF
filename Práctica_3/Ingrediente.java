@@ -19,7 +19,14 @@ public class Ingrediente {
         this.alergenos.addAll(EnumSet.copyOf(Arrays.asList(alergenos)));
         return this;
     }
-    //public String toString() {        return "* ["+ this.tipo + "]" + this.nombre + ": ";    }
+    public InfoNutricional getInfoNutricional() {
+        return infoNutricional;
+    }
+    public EnumSet<Alergeno> getAlergenos() {
+        return alergenos;
+    }
+
+
     @Override
     public String toString() {
         String tipoString="";
