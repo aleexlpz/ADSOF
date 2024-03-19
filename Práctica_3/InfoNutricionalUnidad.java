@@ -14,8 +14,7 @@ public class InfoNutricionalUnidad extends InfoNutricional{
     }
     @Override
     public String toString() {
-        return String.format(Locale.US,"INFORMACION NUTRICIONAL POR UNIDAD -> Valor energetico: %.2f kcal, Hidratos de carbono: %.2f g, Grasas: %.2f g, Saturadas: %.2f g, Proteinas: %.2f g, Azucares: %.2f g, Fibra: %.2f g, Sodio: %.2f mg.",
-                calorias, hidratos, grasastotales, grasassaturadas, proteinas, azucares, fibra, sodio);
+        return "INFORMACION NUTRICIONAL POR UNIDAD -> "+ super.toString();
     }
 
 }
