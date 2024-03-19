@@ -28,35 +28,8 @@ public class Ingrediente {
 
     @Override
     public String toString() {
-        String tipoString="";
 
-        if (tipo instanceof String) {
-            // Si es una cadena de texto, usarla directamente
-            tipoString = (String) tipo;
-        } else if (tipo instanceof TipoIngrediente) {
-            // Si es una instancia de TipoIngrediente, formatearla correctamente
-            tipoString = tipo.toString().replace("_", " ").toLowerCase();
-            tipoString = tipoString.substring(0, 1).toUpperCase() + tipoString.substring(1);
-        }
-
-        // Construir la representación del tipo de ingrediente
-        tipoString = "[" + tipoString + "]";
-
-        String alergenosString = "";
-
-        String infoNutricionalString = infoNutricional.toString();
-
-        if (!alergenos.isEmpty()) {
-            alergenosString += " CONTIENE ";
-            for (Alergeno alergeno : alergenos) {
-                alergenosString += alergeno.toString().toLowerCase() + ", ";
-            }
-            // Eliminar la coma final
-            alergenosString = alergenosString.substring(0, alergenosString.length() - 2);
-        }
-
-        // Imprimir el nombre del ingrediente y su información nutricional
-        return tipoString + " " + nombre + ": " + infoNutricionalString+ alergenosString;
+        return "[" + tipo + "] " + nombre + ": " + infoNutricional.toString() + (alergenos.isEmpty() ? "" : " CONTIENE " + alergenos.toString());
     }
 
 

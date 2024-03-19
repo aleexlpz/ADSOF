@@ -1,5 +1,6 @@
 package Práctica_3;
 import java.util.*;
+
 public class MenusTester extends PlatosTester {
     public static void main(String[] args) {
         MenusTester tester = new MenusTester();
