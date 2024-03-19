@@ -54,6 +54,37 @@ public class Plato {
             return true;
         }
     }
+    public String getNombre() {
+        return nombre;
+    }
+    public double getPcalorias() {
+        return pcalorias;
+    }
+    public double getPhidratos() {
+        return phidratos;
+    }
+    public double getPgrasastotales() {
+        return pgrasastotales;
+    }
+    public double getPgrasassaturadas() {
+        return pgrasassaturadas;
+    }
+    public double getPproteinas() {
+        return pproteinas;
+    }
+    public double getPazucares() {
+        return pazucares;
+    }
+    public double getPfibra() {
+        return pfibra;
+    }
+    public double getPsodio() {
+        return psodio;
+    }
+    public EnumSet<Alergeno> getAlergenos() {
+        return alergenos;
+    }
+
 
     public void addPlato(Plato plato) {
         for (Map.Entry<Ingrediente, Integer> entry : plato.ingredientes.entrySet()) {

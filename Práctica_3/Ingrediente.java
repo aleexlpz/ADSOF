@@ -4,8 +4,7 @@ import java.util.*;
 public class Ingrediente {
     private String nombre;
     private Object tipo;
-
-    EnumSet<Alergeno> alergenos;
+    private EnumSet<Alergeno> alergenos;
     private InfoNutricional infoNutricional;
 
     public Ingrediente(String nombre, Object tipo, InfoNutricional infoNutricional) {
@@ -59,5 +58,6 @@ public class Ingrediente {
         // Imprimir el nombre del ingrediente y su información nutricional
         return tipoString + " " + nombre + ": " + infoNutricionalString+ alergenosString;
     }
+
 
 }
