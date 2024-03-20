@@ -1,6 +1,8 @@
 package Práctica_3;
 import java.util.*;
+
 public class MenusTester extends PlatosTester {
+    private static List<Menu> menus = new ArrayList<>();
     public static void main(String[] args) {
         MenusTester tester = new MenusTester();
         for (Menu menu : tester.crearMenus())
@@ -13,4 +15,8 @@ public class MenusTester extends PlatosTester {
         Menu m3 = new Menu(platos.get("Macarrones"));
         return List.of(m1, m2, m3);
     }
+    public static List<Menu> getMenus() {
+        return menus;
+    }
+
 }
