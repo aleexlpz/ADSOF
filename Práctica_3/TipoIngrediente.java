@@ -1,5 +1,7 @@
 package Práctica_3;
-
+/**
+ * Enumerado que representa los tipos de ingredientes que puede contener un plato.
+ */
 public enum TipoIngrediente {
     CEREAL( "Cereal"),
     FRUTA( "Fruta"),
