@@ -5,14 +5,11 @@ import java.lang.*;
 
 public class ManejadorFicheros {
 
-    private static Set<Ingrediente> ingredientes = null;
-    private static Set<Plato> platos = null;
-    private static Set<Menu> menus = null;
+
+    private static Set<Menu> menus;
 
 
     ManejadorFicheros () {
-        ingredientes = new HashSet<>();
-        platos = new HashSet<>();
         menus = new HashSet<>();
     }
     /**
@@ -27,6 +24,7 @@ public class ManejadorFicheros {
             StringBuilder menuwriter = new StringBuilder();
             Set<String> platosEscritos = new HashSet<>();
             Set<String> ingredientesEscritos = new HashSet<>();
+            Set<String> ingredientesPlatos = new HashSet<>();
 
             for (Menu menu : menus) {
                 for (Plato plato : menu.getPlatos()) {
@@ -62,23 +60,28 @@ public class ManejadorFicheros {
                         }
 
                         menuwriter.append("PLATO;").append(plato.getNombre());
-
-                        for (Ingrediente ingrediente : plato.getIngredientes().keySet()) {
-                            menuwriter.append(";INGREDIENTE ").append(ingrediente.getNombre()).append(":").append(plato.getIngredientes().get(ingrediente));
+                        for(Plato plato1 : plato.getPlatos()){
+                            menuwriter.append(";PLATO ").append(plato1.getNombre());
+                            for(Ingrediente ingrediente : plato1.getIngredientes().keySet()){
+                                if (!ingredientesPlatos.contains(ingrediente.getNombre())) {
+                                    ingredientesPlatos.add(ingrediente.getNombre());
+                                }
+                            }
                         }
-
+                        for (Ingrediente ingrediente : plato.getIngredientes().keySet()) {
+                            if (!ingredientesPlatos.contains(ingrediente.getNombre())) {
+                                menuwriter.append(";INGREDIENTE ").append(ingrediente.getNombre()).append(":").append(plato.getIngredientes().get(ingrediente));
+                            }
+                        }
+                        ingredientesPlatos.clear();
                         menuwriter.append("\n");
                     }
                 }
 
                 menuwriter.append("MENU");
                 for (Plato plato : menu.getPlatos()) {
-                    if (!platosEscritos.contains(plato.getNombre())) {
-                        menuwriter.append(";").append(plato.getNombre());
-                        platosEscritos.add(plato.getNombre());
-                    }
+                    menuwriter.append(";").append(plato.getNombre());
                 }
-
                 menuwriter.append("\n");
             }
 
@@ -104,6 +107,8 @@ public class ManejadorFicheros {
         FileReader fichero = null;
         BufferedReader lector = null;
         ArrayList<Ingrediente> ingredientes = new ArrayList<>();
+        HashMap<String, Plato> platos = new HashMap<>();
+        menus = new HashSet<>();
 
         try {
             fichero = new FileReader(nombreFichero);
@@ -156,29 +161,25 @@ public class ManejadorFicheros {
                 } else if (partes[0].equals("PLATO")) {
                     Plato plato = new Plato(partes[1]);
                     for (int i = 2; i < partes.length; i++) {
-                        String[] partesIngrediente = partes[i].split(":");
-                        String[] ing = partesIngrediente[0].split("\\s+");
-                        Ingrediente ingrediente = null;
-
-                        if (ing[0].equals("INGREDIENTE")) {
-                            for (Ingrediente ingrediente1 : ingredientes) {
-                                if (ingrediente1.getNombre().equals(ing[1])) {
-                                    ingrediente = ingrediente1;
+                        String[] partesIngrediente = partes[i].split(" ");
+                        if (partesIngrediente[0].equals("PLATO")) {
+                            Plato plato1 = new Plato(partesIngrediente[1]);
+                            plato.addPlato(plato1);
+                        } else if (partesIngrediente[0].equals("INGREDIENTE")) {
+                            String[] partesIngrediente2 = partesIngrediente[1].split(":");
+                            for (Ingrediente ingrediente : ingredientes) {
+                                if (ingrediente.getNombre().equals(partesIngrediente2[0])) {
+                                    plato.addIngrediente(ingrediente, Integer.parseInt(partesIngrediente2[1]));
                                 }
                             }
                         }
-                        plato.addIngrediente(ingrediente, Integer.parseInt(partesIngrediente[1]));
-
                     }
-                    platos.add(plato);
+                    platos.put(plato.getNombre(), plato);
+
                 } else if (partes[0].equals("MENU")) {
                     Menu menu = new Menu();
                     for (int i = 1; i < partes.length; i++) {
-                        for (Plato plato : platos) {
-                            if (plato.getNombre().equals(partes[i])) {
-                                menu.addPlato(plato);
-                            }
-                        }
+                        menu.addPlato(platos.get(partes[i]));
                     }
                     menus.add(menu);
                 }
@@ -201,21 +202,6 @@ public class ManejadorFicheros {
                 }
             }
         }
-    }
-    /**
-     * Devuelve la lista de ingredientes leída del fichero.
-     * @return lista de ingredientes
-     */
-    public Set<Ingrediente> getIngredientes() {
-        return ingredientes;
-    }
-
-    /**
-     * Devuelve la lista de platos leída del fichero.
-     * @return lista de platos
-     */
-    public Set<Plato> getPlatos() {
-        return platos;
     }
 
     /**

@@ -7,6 +7,7 @@ public class Plato {
     private String nombre;
     private InfoNutricionalPlato infoplato;
     private HashMap<Ingrediente, Integer> ingredientes;
+    private ArrayList<Plato> platos;
     private EnumSet<Alergeno> alergenos;
 
     /**
@@ -17,6 +18,7 @@ public class Plato {
         this.nombre = nombre;
         this.infoplato = new InfoNutricionalPlato(0, 0, 0, 0, 0, 0, 0, 0);
         this.ingredientes = new HashMap<>();
+        this.platos = new ArrayList<>();
         this.alergenos = EnumSet.noneOf(Alergeno.class);
     }
 
@@ -48,6 +50,13 @@ public class Plato {
     public HashMap<Ingrediente, Integer> getIngredientes() {
         return ingredientes;
     }
+    /**
+     * Metodo getter que devuelve los platos del plato.
+     * @return Platos del plato.
+     */
+    public ArrayList<Plato> getPlatos() {
+        return platos;
+    }
 
     /**
      * Añade un ingrediente al plato.
@@ -74,6 +83,10 @@ public class Plato {
      * @param plato Plato a añadir
      */
     public void addPlato(Plato plato) {
+        if(this.platos.contains(plato)){
+            return;
+        }
+        this.platos.add(plato);
         for (Map.Entry<Ingrediente, Integer> entry : plato.ingredientes.entrySet()) {
             this.addIngrediente(entry.getKey(), entry.getValue());
         }

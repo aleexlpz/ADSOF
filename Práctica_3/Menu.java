@@ -45,6 +45,9 @@ public class Menu {
         this.platosNombre.add(plato.getNombre());
     }
 
+    public InfoNutricionalMenu getInfo() {
+        return this.infomenu;
+    }
     /**
      * Metodo toString que devuelve la informacion del menu.
      * @return String

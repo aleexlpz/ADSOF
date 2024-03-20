@@ -8,8 +8,8 @@ public class FicherosTester extends MenusTester {
 // guardar lista de menús a fichero
         ManejadorFicheros.guardarFichero("comida.txt", menus);
 // leer lista de menús de fichero, e imprimirlos por pantalla
-       //ManejadorFicheros.leerFichero("comida.txt");
-       //for (Menu menu : ManejadorFicheros.getMenus())
-          // System.out.println("* " + menu);
+       ManejadorFicheros.leerFichero("comida.txt");
+       for (Menu menu : ManejadorFicheros.getMenus())
+           System.out.println("* " + menu);
     }
 }
