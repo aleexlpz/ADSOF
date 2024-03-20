@@ -65,7 +65,6 @@ public class Ingrediente {
      */
     @Override
     public String toString() {
-
         return "[" + tipo + "] " + nombre + ": " + infoNutricional.toString() + (alergenos.isEmpty() ? "" : " CONTIENE " + alergenos.toString());
     }
 
