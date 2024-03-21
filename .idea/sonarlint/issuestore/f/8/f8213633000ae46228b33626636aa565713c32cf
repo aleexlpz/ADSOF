@@ -1,0 +1,7 @@
+
+Š
+java:S1319/"mThe return type of this method should be an interface such as "Set" rather than the implementation "EnumSet".(Ş¥ò¦8Ùã¡éå1
+
+java:S13196"mThe return type of this method should be an interface such as "Map" rather than the implementation "HashMap".(ê‹Ş’úÿÿÿÿ8Úã¡éå1
+
+java:S1319="pThe return type of this method should be an interface such as "List" rather than the implementation "ArrayList".(¬ õ8Úã¡éå1
