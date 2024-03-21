@@ -1,0 +1,23 @@
+package Práctica_3.tester;
+import java.util.*;
+import Práctica_3.elemcomida.*;
+
+public class MenusTester extends PlatosTester {
+    private static List<Menu> menus = new ArrayList<>();
+    public static void main(String[] args) {
+        MenusTester tester = new MenusTester();
+        for (Menu menu : tester.crearMenus())
+            System.out.println("* " + menu);
+    }
+    public List<Menu> crearMenus() {
+        Map<String, Plato> platos = this.crearPlatos();
+        Menu m1 = new Menu(platos.get("Macarrones"),platos.get("Tortilla"));
+        Menu m2 = new Menu(platos.get("Macarrones"),platos.get("Tortilla guisada"));
+        Menu m3 = new Menu(platos.get("Macarrones"));
+        return List.of(m1, m2, m3);
+    }
+    public static List<Menu> getMenus() {
+        return menus;
+    }
+
+}
