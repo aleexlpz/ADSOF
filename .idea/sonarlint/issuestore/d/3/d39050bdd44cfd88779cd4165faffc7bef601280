@@ -1,0 +1,23 @@
+
+o
+java:S1104"YMake GENESIS_BLOCK a static final constant or non-public and provide accessors if needed.(Μϋ‘
+q
+java:S1104"VMake DIFFICULTY a static final constant or non-public and provide accessors if needed.(‘πιΉϊÿÿÿÿ
+i
+java:S1104"SMake VERSION a static final constant or non-public and provide accessors if needed.(Θ™α
+I
+java:S1444"3Make this "public static GENESIS_BLOCK" field final(Μϋ‘
+K
+java:S1444"0Make this "public static DIFFICULTY" field final(‘πιΉϊÿÿÿÿ
+C
+java:S1444"-Make this "public static VERSION" field final(Θ™α
+
+java:S1598"‡This file "BlockConfig.java" should be located in "blockchain\utils" directory, not in "C:\Users\2alex\IdeaProjects\ADSOF2\Practica_4".(ιΏϊS
+n
+java:S3008"XRename this field "GENESIS_BLOCK" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Μϋ‘
+p
+java:S3008"URename this field "DIFFICULTY" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(‘πιΉϊÿÿÿÿ
+h
+java:S3008"RRename this field "VERSION" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Θ™α
+P
+java:S1118":Add a private constructor to hide the implicit public one.(«ρτ
