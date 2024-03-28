@@ -6,13 +6,26 @@ import java.util.*;
 public class BlockchainNetwork {
     private String name;
     private List<Element> elements;
+    private List<Node> nodes;
+    private List<Subnet> subnets;
 
     public BlockchainNetwork(String name) {
         this.name = name;
         this.elements = new ArrayList<>();
+        this.nodes = new ArrayList<>();
+        this.subnets = new ArrayList<>();
     }
-    public void connect(Element element){
+    public BlockchainNetwork connect(Element element){
         this.elements.add(element);
+        if(element instanceof Node){
+            System.out.println("ADSOF blockchain - new peer connected: " + element);
+            this.nodes.add((Node) element);
+        }else if(element instanceof Subnet){
+            System.out.println("ADSOF blockchain - new peer connected: " + element);
+            this.subnets.add((Subnet) element);
+
+        }
+        return this;
     }
     public String getName() {
         return name;
@@ -29,7 +42,8 @@ public class BlockchainNetwork {
 
     @Override
     public String toString() {
-        return this.name+ " - ";
+        return this.name + " consists of " + this.elements.size() + " elements:\n" +
+                this.elements.stream().map(Element::toString).reduce("", (a, b) -> a + "* " + b + "\n");
     }
 
 }

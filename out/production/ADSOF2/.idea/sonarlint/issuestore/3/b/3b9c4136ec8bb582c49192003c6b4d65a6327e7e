@@ -1,7 +1,0 @@
-
-†
-java:S1319#"pThe return type of this method should be an interface such as "List" rather than the implementation "ArrayList".(¬ õ
-h
-java:S3008"MRename this field "ID" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Ò­“Ëüÿÿÿÿ
-c
-java:S1845"HRename field "ID" to prevent any misunderstanding/clash with field "id".(Ò­“Ëüÿÿÿÿ

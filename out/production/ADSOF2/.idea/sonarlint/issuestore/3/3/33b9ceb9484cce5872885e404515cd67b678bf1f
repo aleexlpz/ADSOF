@@ -1,6 +1,0 @@
-
-ƒ
-java:S1319h"mThe return type of this method should be an interface such as "Set" rather than the implementation "EnumSet".(Ş¥ò¦
-T
-java:S5993"9Change the visibility of this constructor to "protected".(ØÜÇÎûÿÿÿÿ
-[	java:S107"AConstructor has 8 parameters, which is greater than 7 authorized.(ØÜÇÎûÿÿÿÿ

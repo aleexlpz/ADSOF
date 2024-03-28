@@ -8,7 +8,7 @@ public class Transaction {
     private String receiverKey;
     private int value;
 
-    public Transaction(String senderKey, String receiverKey, int value) {
+    public Transaction(Wallet sender, Wallet receiver, int value) {
         this.id = nextId++;
         this.senderKey = senderKey;
         this.receiverKey = receiverKey;

@@ -1,4 +1,7 @@
 package Practica_4.AdditionalFiles;
+import Practica_4.*;
+
+import blockchain.utils.CommonUtils;
 
 public class TesterMainExercise1 {
     protected Wallet wallet1, wallet2, wallet3;

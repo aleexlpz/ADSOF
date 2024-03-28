@@ -1,4 +1,5 @@
 package Practica_4;
+import java.util.*;
 
 //Node: es el elemento básico para el funcionamiento del Blockchain. Cada nodo tiene un identificador único en la red, un Wallet
 //asociado y una lista de transacciones (con el objetivo de conocer cuales están confirmadas). Hay dos tipos de nodos: simples y
@@ -7,7 +8,7 @@ package Practica_4;
 //posteriores), por lo que definen una capacidad computacional medida en MIPS.
 public class Node extends Element{
     private int id;
-    private static int nextId = 1;
+    private static int nextId = 0;
 
     private Wallet wallet;
     private boolean isMiner;
@@ -42,9 +43,14 @@ public class Node extends Element{
         return transactions;
     }
 
+    public String fullName() {
+
+        return "@Node#" + String.format("%03d", this.getId());
+    }
+
 
     @Override
     public String toString() {
-        return this.wallet + " | @Node#" + this.getId();
+        return this.wallet + " | @Node#" + String.format("%03d", this.getId());
     }
 }

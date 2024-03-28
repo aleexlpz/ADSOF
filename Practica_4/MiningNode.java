@@ -14,7 +14,7 @@ public class MiningNode extends Node{
 
     @Override
     public String toString() {
-        return this.getWallet() + " | @MiningNode#" + this.getId();
+        return this.getWallet() + " | @MiningNode#" + String.format("%03d", this.getId());
     }
 
 }

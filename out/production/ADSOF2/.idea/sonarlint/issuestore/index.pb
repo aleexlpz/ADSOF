@@ -2,24 +2,32 @@
 :
 
 ADSOF2.iml,6\a\6ad2c27076a5aaf330fb3b170f15a6922f0ce43f
-R
-"Práctica_3/ManejadorFicheros.java,e\e\ee6162aa43cf7c27306e76bc2cabf171c7555ac8
+�
+Q.idea/sonarlint/securityhotspotstore/6/a/6ad2c27076a5aaf330fb3b170f15a6922f0ce43f,a\a\aaba001d1a22273347ff5a2bbc07e9fd4fb2142d
+]
+-.idea/sonarlint/securityhotspotstore/index.pb,8\8\88a9255124c95bdc913197c120a8d560edc59c8e
+S
+#.idea/sonarlint/issuestore/index.pb,9\f\9fe84ebb15faf917b7def6236dba604453cc61e0
+w
+G.idea/sonarlint/issuestore/6/a/6ad2c27076a5aaf330fb3b170f15a6922f0ce43f,5\5\55cece69649255b323f4539d1f8fd5847e4ca727
 :
 
-comida.txt,b\f\bf636e5b6c87319eee9aa4c7f87ae704e60aaca8
-O
-Práctica_3/FicherosTester.java,f\e\feed2734e7b8037c90fc2a7b071774e6fbb07f52
-F
-Práctica_3/Plato.java,f\8\f8213633000ae46228b33626636aa565713c32cf
-S
-#Práctica_3/PlanificadorTester.java,0\e\0ef942343270ac42a903af2752ac87cfa84517e1
+.gitignore,a\5\a5cc2925ca8258af241be7e5b0381edf30266302
 Q
-!Práctica_3/PlanificadorMenu.java,6\b\6b4eb948a0f2307e65b9c220f25098ba2b614738
-P
- Práctica_3/InfoNutricional.java,3\3\33b9ceb9484cce5872885e404515cd67b678bf1f
-T
-$Práctica_3/ElementoNutricional.java,3\c\3c22007389f9ebf9097c55cbc619d37b984abf88
-I
-Práctica_3/Alergeno.java,f\f\fff3efbd7627e5fb897fc785e4c52832fb20958f
-E
-Práctica_3/Menu.java,3\b\3b9c4136ec8bb582c49192003c6b4d65a6327e7e
+!Practica_4/BlockchainNetwork.java,9\a\9a51af175dc81fe2beedce7a0bb2ff672d20a93f
+S
+#Practica_4/TesterMainExercise1.java,4\a\4a5efdd48de288c34221e593570d13241ee211de
+K
+Practica_4/Transaction.java,a\6\a695418ebbdbb207aec926c4091b8948590f3adc
+F
+Practica_4/Subnet.java,3\9\394a051fe7b41e76a26b9d743eba1a9012d5076c
+K
+Practica_4/CommonUtils.java,9\a\9a950264353fa0ed37ec4c86eac1fd174ae3059c
+K
+Practica_4/BlockConfig.java,d\3\d39050bdd44cfd88779cd4165faffc7bef601280
+D
+Practica_4/Node.java,2\b\2b611ae5c1794ad3a8b8cfc0721941f38af4aefa
+G
+Practica_4/Element.java,b\3\b32af72230bbf1ed7b81512252820e308a794689
+c
+3Practica_4/AdditionalFiles/TesterMainExercise1.java,6\e\6ea3960a44528b526e1a02cda92513f948afde2f
