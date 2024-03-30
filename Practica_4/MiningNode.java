@@ -12,6 +12,10 @@ public class MiningNode extends Node{
         return cComputacional;
     }
 
+    public String fullName() {
+        return "@MiningNode#" + String.format("%03d", this.getId());
+    }
+
     @Override
     public String toString() {
         return this.getWallet() + " | @MiningNode#" + String.format("%03d", this.getId());

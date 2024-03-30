@@ -5,28 +5,33 @@ import java.util.*;
 //creación de subredes de distintos tamaños, es decir, debe poder recibir distinto número de nodos como parámetro.
 public class BlockchainNetwork {
     private String name;
-    private List<Element> elements;
     private List<Node> nodes;
     private List<Subnet> subnets;
 
     public BlockchainNetwork(String name) {
         this.name = name;
-        this.elements = new ArrayList<>();
         this.nodes = new ArrayList<>();
         this.subnets = new ArrayList<>();
     }
-    public BlockchainNetwork connect(Element element){
-        this.elements.add(element);
+    public BlockchainNetwork connect(Object element) throws ConnectionException {
         if(element instanceof Node){
+            if(this.nodes.contains((Node) element)){
+                throw new ConnectionException(((Node) element).fullName() + "is already connected to the network");
+            }
+            for (Subnet s : this.subnets){
+                if(s.getNodes().contains((Node) element)){
+                    throw new ConnectionException(((Node) element).fullName() + "is connected to a different network");
+                }
+            }
             System.out.println("ADSOF blockchain - new peer connected: " + element);
             this.nodes.add((Node) element);
         }else if(element instanceof Subnet){
             System.out.println("ADSOF blockchain - new peer connected: " + element);
             this.subnets.add((Subnet) element);
-
         }
         return this;
     }
+
     public String getName() {
         return name;
     }
@@ -39,11 +44,28 @@ public class BlockchainNetwork {
         return subnets;
     }
 
+    public void brodcast(TransactionNotification tn){
+        for(Node n : this.nodes){
+            tn.process(n);
+        }
+        for(Subnet s : this.subnets){
+            s.brodcast(tn);
+        }
+    }
+
+
 
     @Override
     public String toString() {
-        return this.name + " consists of " + this.elements.size() + " elements:\n" +
-                this.elements.stream().map(Element::toString).reduce("", (a, b) -> a + "* " + b + "\n");
+        StringBuilder sb = new StringBuilder();
+        sb.append(this.name).append(" consists of ").append(this.nodes.size() + this.subnets.size()).append(" elements:\n");
+        for(Node n : this.nodes){
+            sb.append("* ").append(n).append("\n");
+        }
+        for(Subnet s : this.subnets){
+            sb.append("* ").append(s).append("\n");
+        }
+        return sb.toString();
     }
 
 }

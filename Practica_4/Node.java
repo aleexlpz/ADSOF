@@ -6,7 +6,7 @@ import java.util.*;
 //minadores. Los nodos simples están enfocados únicamente a hacer transacciones, mientras que los nodos minadores, además de
 //proporcionar la misma funcionalidad que los nodos simples, son capaces de minar y validar bloques (lo veremos en apartados
 //posteriores), por lo que definen una capacidad computacional medida en MIPS.
-public class Node extends Element{
+public class Node {
     private int id;
     private static int nextId = 0;
 
@@ -20,7 +20,8 @@ public class Node extends Element{
     public Node(Wallet wallet) {
         this.id = nextId++;
         this.wallet = wallet;
-
+        this.isMiner = false;
+        this.transactions = new ArrayList<>();
     }
 
     public int getId() {
@@ -43,11 +44,16 @@ public class Node extends Element{
         return transactions;
     }
 
-    public String fullName() {
 
-        return "@Node#" + String.format("%03d", this.getId());
+    public Transaction createTransaction(Wallet receiver, int value){
+        Transaction t = new Transaction(this.wallet, receiver, value);
+        this.transactions.add(t);
+        return t;
     }
 
+    public String fullName(){
+        return "@Node#" + String.format("%03d", this.getId());
+    }
 
     @Override
     public String toString() {

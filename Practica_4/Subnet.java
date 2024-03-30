@@ -1,27 +1,27 @@
 package Practica_4;
 import java.util.*;
 
-public class Subnet extends Element {
+public class Subnet {
     private int id;
     private static int nextId = 1;
-    private Node[] nodes;
+    private List<Node>  nodes;
 
     public Subnet(Node... nodes) {
         this.id = nextId++;
-        this.nodes = nodes;
+        this.nodes = new ArrayList<>();
     }
 
     public int getId() {
         return id;
     }
 
-    public Node[] getNodes() {
+    public List<Node> getNodes() {
         return nodes;
     }
 
 
     @Override
     public String toString() {
-        return "Node network of " + nodes.length + " nodes: " + Arrays.toString(nodes);
+        return "Node network of " + nodes.size() + " nodes: " + nodes;
     }
 }
