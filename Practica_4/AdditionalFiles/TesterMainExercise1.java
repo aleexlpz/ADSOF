@@ -1,8 +1,9 @@
 package Practica_4.AdditionalFiles;
 import Practica_4.*;
 
-import blockchain.utils.CommonUtils;
+//import blockchain.utils.CommonUtils;
 
+import Practica_4.Subnet;
 public class TesterMainExercise1 {
     protected Wallet wallet1, wallet2, wallet3;
     protected MiningNode miningNode, miningNode2;

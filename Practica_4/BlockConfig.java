@@ -1,4 +1,4 @@
-package blockchain.utils;
+package Practica_4.utils;
 
 public class BlockConfig {
 	public static String GENESIS_BLOCK = "0000000000000000000000000000000000000000000000000000000000000000";
