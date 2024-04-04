@@ -30,6 +30,9 @@ public class Wallet {
     public void setBalance(int balance) {
         this.balance = balance;
     }
+    public Wallet getPublicKey() {
+        return this;
+    }
 
     @Override
     public String toString() {
