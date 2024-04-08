@@ -3,26 +3,20 @@ import java.util.*;
 
 import Practica_4.exception.*;
 
-public class Node implements IConnectable{
-    private int id;
-    private static int nextId = 0;
+public class Node extends Element{
+
     private Wallet wallet;
     private boolean isMiner;
     private int mips;
     private List<Transaction> transactions;
 
 
-
     public Node(Wallet wallet) {
-        this.id = nextId++;
         this.wallet = wallet;
         this.isMiner = false;
         this.transactions = new ArrayList<>();
     }
 
-    public int getId() {
-        return id;
-    }
 
     public Wallet getWallet() {
         return wallet;
@@ -55,11 +49,25 @@ public class Node implements IConnectable{
         this.transactions.add(t);
         return t;
     }
+    public Transaction createTransaction(String receiver, int value) throws TransactionException{
+
+        Transaction t = new Transaction(this.wallet, receiver, value);
+        this.transactions.add(t);
+        return t;
+    }
+    @Override
+    public boolean nodoIncluido(Node n)throws DuplicateConnectionException{
+        if (this == n) {
+            throw new DuplicateConnectionException(n);
+        }
+        return false;
+    }
 
 
     public String fullName(){
-        return "@Node#" + String.format("%03d", this.getId());
+        return "@Node#" + this.getId();
     }
+
 
     @Override
     public IConnectable getParent() {
@@ -73,6 +81,6 @@ public class Node implements IConnectable{
 
     @Override
     public String toString() {
-        return this.wallet + " | @Node#" + String.format("%03d", this.getId());
+        return this.wallet + " | @Node#"+ this.getId();
     }
 }

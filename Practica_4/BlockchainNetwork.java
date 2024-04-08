@@ -7,45 +7,44 @@ import java.util.*;
 
 public class BlockchainNetwork implements IConnectable{
     private String name;
-    private List<Node> nodes;
-    private List<Subnet> subnets;
+    private List<Element> elementos;
 
     public BlockchainNetwork(String name) {
         this.name = name;
-        this.nodes = new ArrayList<>();
-        this.subnets = new ArrayList<>();
+        this.elementos= new ArrayList<>();
     }
 
-    public BlockchainNetwork connect(Node node) throws ConnectionException {
-        if(this.nodes.contains(node)){
-            throw new ConnectionException(node.fullName() + "  is already connected to the network");
-        }
+    public BlockchainNetwork connect(Node node) throws ConnectionException, DuplicateConnectionException {
+        this.nodoIncluido(node);
+        this.elementos.add(node);
         System.out.println("ADSOF blockchain - new peer connected: " + node);
-        this.nodes.add(node);
         return this;
     }
-    public BlockchainNetwork connect(Subnet subnet) throws DuplicateConnectionException {
-        for (Node n : subnet.getNodes()){
-            if(this.nodes.contains(n)){
-                throw new DuplicateConnectionException(n.fullName() + "is connected to a different network");
-            }
+    public BlockchainNetwork connect(Subnet subnet) {
+        if (this.elementos.contains(subnet)) {
+            return null;
         }
+        this.elementos.add(subnet);
+
         System.out.println("ADSOF blockchain - new peer connected: " + subnet);
-        this.subnets.add(subnet);
         return this;
+    }
+
+    public boolean nodoIncluido(Node nodo) throws ConnectionException, DuplicateConnectionException {
+        for (Element element: this.elementos) {
+            element.nodoIncluido(nodo);
+        }
+        return false;
     }
 
     public String getName() {
         return name;
     }
 
-    public List<Node> getNodes() {
-        return nodes;
+    public List<Element> getElementos() {
+        return this.elementos;
     }
 
-    public List<Subnet> getSubnets() {
-        return subnets;
-    }
 
     @Override
     public IConnectable getParent() {
@@ -54,23 +53,17 @@ public class BlockchainNetwork implements IConnectable{
 
     @Override
     public void broadcast(IMessage msg){
-        for(Node n : this.nodes){
-            n.broadcast(msg);
-        }
-        for(Subnet s : this.subnets){
-            s.broadcast(msg);
+        for(Element elem: this.elementos){
+            elem.broadcast(msg);
         }
     }
 
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append(this.name).append(" consists of ").append(this.nodes.size() + this.subnets.size()).append(" elements:\n");
-        for(Node n : this.nodes){
-            sb.append("* ").append(n).append("\n");
-        }
-        for(Subnet s : this.subnets){
-            sb.append("* ").append(s).append("\n");
+        sb.append(this.name).append(" consists of ").append(this.elementos.size()).append(" elements:\n");
+        for(Element e: this.elementos){
+            sb.append("* ").append(e).append("\n");
         }
         return sb.toString();
     }

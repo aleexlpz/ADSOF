@@ -1,16 +1,27 @@
 package Practica_4;
 
+import Practica_4.exception.*;
+
 public class Transaction {
     private int id;
-    private static int nextId = 1;
-    private Wallet sender;
-    private Wallet receiver;
+    private static int nextId = 0;
+    private String senderkey;
+    private String receiverkey;
     private int value;
 
-    public Transaction(Wallet sender, Wallet receiver, int value) {
+
+
+    public Transaction(Wallet sender, Wallet receiver, int value) throws TransactionException{
+        this(sender, receiver.getKey(), value);
+    }
+
+    public Transaction(Wallet sender, String receiver, int value) throws TransactionException{
+        if (value <0){
+            throw new TransactionException(sender, receiver, value);
+        }
         this.id = nextId++;
-        this.sender = sender;
-        this.receiver = receiver;
+        this.senderkey = sender.getKey();
+        this.receiverkey = receiver;
         this.value = value;
     }
 
@@ -18,8 +29,8 @@ public class Transaction {
         return id;
     }
 
-    public Wallet getSender() {
-        return sender;
+    public String getSender() {
+        return senderkey;
     }
 
 
@@ -29,11 +40,6 @@ public class Transaction {
 
     @Override
     public String toString() {
-        return "Transaction{" +
-                "id=" + id +
-                ", senderKey='" + this.sender.getKey() + '\'' +
-                ", receiverKey='" + this.receiver.getKey() + '\'' +
-                ", value=" + this.value +
-                '}';
+        return "Transaction " + this.id + "| from: " + this.senderkey + ", to: " + this.receiverkey + ", quantity: " + this.value;
     }
 }
