@@ -49,3 +49,7 @@ Z
 *Práctica_3/nutricion/InfoNutricional.java,8\3\835956f62ee4e71b73eff09c9abecf61188a7db6
 ^
 .Práctica_3/nutricion/InfoNutricionalMenu.java,f\3\f3729ab8affcc59b9cfdbca0a42ba4391b39fa8e
+S
+#Practica_4/ConnectionException.java,2\4\24906073cbf9f6e066f95b4af1efb5b2298eef3f
+\
+,Practica_4/DuplicateConnectionException.java,4\7\47e41b69e9a09d50c19d3bd4f7630c31d1ae0f4b

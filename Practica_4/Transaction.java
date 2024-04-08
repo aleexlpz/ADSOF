@@ -1,6 +1,5 @@
 package Practica_4;
-//Transaction: los Wallets pueden llevar a cabo transacciones entre ellos. Cada transacción tiene un identificador único e incluye la
-//clave del emisor, la clave del receptor y el valor de la transacción.
+
 public class Transaction {
     private int id;
     private static int nextId = 1;

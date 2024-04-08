@@ -1,9 +1,11 @@
 package Practica_4;
+
+import Practica_4.exception.*;
+import Practica_4.utils.*;
+
 import java.util.*;
-//BlockchainNetwork: representa la red de comunicaciones del entorno Blockchain. Tiene un nombre y está compuesta por una lista
-//de nodos y subredes (Subnet). Una subred tiene un identificador único, está compuesta de nodos, y su constructor debe soportar la
-//creación de subredes de distintos tamaños, es decir, debe poder recibir distinto número de nodos como parámetro.
-public class BlockchainNetwork {
+
+public class BlockchainNetwork implements IConnectable{
     private String name;
     private List<Node> nodes;
     private List<Subnet> subnets;
@@ -13,22 +15,23 @@ public class BlockchainNetwork {
         this.nodes = new ArrayList<>();
         this.subnets = new ArrayList<>();
     }
-    public BlockchainNetwork connect(Object element) throws ConnectionException {
-        if(element instanceof Node){
-            if(this.nodes.contains((Node) element)){
-                throw new ConnectionException(((Node) element).fullName() + "is already connected to the network");
-            }
-            for (Subnet s : this.subnets){
-                if(s.getNodes().contains((Node) element)){
-                    throw new ConnectionException(((Node) element).fullName() + "is connected to a different network");
-                }
-            }
-            System.out.println("ADSOF blockchain - new peer connected: " + element);
-            this.nodes.add((Node) element);
-        }else if(element instanceof Subnet){
-            System.out.println("ADSOF blockchain - new peer connected: " + element);
-            this.subnets.add((Subnet) element);
+
+    public BlockchainNetwork connect(Node node) throws ConnectionException {
+        if(this.nodes.contains(node)){
+            throw new ConnectionException(node.fullName() + "  is already connected to the network");
         }
+        System.out.println("ADSOF blockchain - new peer connected: " + node);
+        this.nodes.add(node);
+        return this;
+    }
+    public BlockchainNetwork connect(Subnet subnet) throws DuplicateConnectionException {
+        for (Node n : subnet.getNodes()){
+            if(this.nodes.contains(n)){
+                throw new DuplicateConnectionException(n.fullName() + "is connected to a different network");
+            }
+        }
+        System.out.println("ADSOF blockchain - new peer connected: " + subnet);
+        this.subnets.add(subnet);
         return this;
     }
 
@@ -44,16 +47,20 @@ public class BlockchainNetwork {
         return subnets;
     }
 
-    public void brodcast(TransactionNotification tn){
-        for(Node n : this.nodes){
-            tn.process(n);
-        }
-        for(Subnet s : this.subnets){
-            s.brodcast(tn);
-        }
+    @Override
+    public IConnectable getParent() {
+        return null;
     }
 
-
+    @Override
+    public void broadcast(IMessage msg){
+        for(Node n : this.nodes){
+            n.broadcast(msg);
+        }
+        for(Subnet s : this.subnets){
+            s.broadcast(msg);
+        }
+    }
 
     @Override
     public String toString() {

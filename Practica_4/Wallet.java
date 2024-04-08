@@ -1,8 +1,6 @@
 package Practica_4;
 
 
-import blockchain.utils.CommonUtils;
-
 public class Wallet {
     private String username;
     private String key;

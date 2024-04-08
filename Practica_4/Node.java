@@ -1,15 +1,11 @@
 package Practica_4;
 import java.util.*;
 
-//Node: es el elemento básico para el funcionamiento del Blockchain. Cada nodo tiene un identificador único en la red, un Wallet
-//asociado y una lista de transacciones (con el objetivo de conocer cuales están confirmadas). Hay dos tipos de nodos: simples y
-//minadores. Los nodos simples están enfocados únicamente a hacer transacciones, mientras que los nodos minadores, además de
-//proporcionar la misma funcionalidad que los nodos simples, son capaces de minar y validar bloques (lo veremos en apartados
-//posteriores), por lo que definen una capacidad computacional medida en MIPS.
-public class Node {
+import Practica_4.exception.*;
+
+public class Node implements IConnectable{
     private int id;
     private static int nextId = 0;
-
     private Wallet wallet;
     private boolean isMiner;
     private int mips;
@@ -44,15 +40,35 @@ public class Node {
         return transactions;
     }
 
+    public void addTransaction(Transaction t){
+        this.transactions.add(t);
+    }
 
-    public Transaction createTransaction(Wallet receiver, int value){
+
+    public Transaction createTransaction(Wallet receiver, int value) throws TransactionException{
+
+        if (this.wallet.getBalance() < value){
+            throw new TransactionException(this.wallet,receiver.getKey(), value);
+        }
+
         Transaction t = new Transaction(this.wallet, receiver, value);
         this.transactions.add(t);
         return t;
     }
 
+
     public String fullName(){
         return "@Node#" + String.format("%03d", this.getId());
+    }
+
+    @Override
+    public IConnectable getParent() {
+        return null;
+    }
+
+    @Override
+    public void broadcast(IMessage msg) {
+        msg.process(this);
     }
 
     @Override

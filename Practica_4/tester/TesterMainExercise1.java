@@ -1,7 +1,8 @@
-package Practica_4.AdditionalFiles;
-import Practica_4.*;
+package Practica_4.tester;
 
-import blockchain.utils.CommonUtils;
+import Practica_4.*;
+import Practica_4.utils.*;
+import Practica_4.exception.*;
 
 public class TesterMainExercise1 {
     protected Wallet wallet1, wallet2, wallet3;
@@ -22,13 +23,29 @@ public class TesterMainExercise1 {
         subnet = new Subnet(miningNode2); // we could pass more nodes here
 //Create the network and connect the elements
         this.network = new BlockchainNetwork("ADSOF blockchain");
-        network.connect(node)
-                .connect(subnet)
-                .connect(miningNode);
+
+        try {
+            network.connect(node);
+        } catch (ConnectionException e) {
+            System.err.println(e);
+        }
+        try {
+            network.connect(subnet);
+        } catch (DuplicateConnectionException e) {
+            System.err.println(e);
+        }
+        try {
+            network.connect(miningNode);
+        } catch (ConnectionException e) {
+            System.err.println(e);
+        }
+//        network.connect(node)
+//                .connect(subnet)
+//                .connect(miningNode);
 //create example transaction, which transfers 10 coins from wallet1 to wallet2
         new Transaction(wallet1, wallet2, 10);
     }
-    public static void main(String[] args) {
+    public static void main(String[] args) throws ConnectionException, DuplicateConnectionException{
         TesterMainExercise1 tme = new TesterMainExercise1();
         tme.buildNetwork();
         System.out.println(tme.network);

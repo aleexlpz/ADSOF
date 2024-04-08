@@ -1,10 +1,11 @@
-package Practica_4.AdditionalFiles;
+package Practica_4.tester;
+
 
 import Practica_4.*;
+import Practica_4.exception.*;
 
-
-public class TesterMainExercise2 extends TesterMainExercise1{
-    public void buildFaultyNetwork() throws ConnectionException {
+public class TesterMainExercise2 extends TesterMainExercise1 {
+    public void buildFaultyNetwork() throws ConnectionException, DuplicateConnectionException {
         super.buildNetwork();
         try {
             this.network.connect(this.node); // cannot connect: node already in the network
@@ -27,9 +28,11 @@ public class TesterMainExercise2 extends TesterMainExercise1{
             System.err.println(e);
         }
     }
-    public static void main(String[] args) {
+    public static void main(String[] args) throws ConnectionException, DuplicateConnectionException {
         TesterMainExercise2 tme = new TesterMainExercise2();
         tme.buildFaultyNetwork();
         tme.createTransactions();
     }
 }
+
+
