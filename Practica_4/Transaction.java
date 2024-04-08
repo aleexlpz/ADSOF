@@ -3,14 +3,14 @@ package Practica_4;
 public class Transaction {
     private int id;
     private static int nextId = 1;
-    private String senderKey;
-    private String receiverKey;
+    private Wallet sender;
+    private Wallet receiver;
     private int value;
 
     public Transaction(Wallet sender, Wallet receiver, int value) {
         this.id = nextId++;
-        this.senderKey = senderKey;
-        this.receiverKey = receiverKey;
+        this.sender = sender;
+        this.receiver = receiver;
         this.value = value;
     }
 
@@ -18,13 +18,10 @@ public class Transaction {
         return id;
     }
 
-    public String getSenderKey() {
-        return senderKey;
+    public Wallet getSender() {
+        return sender;
     }
 
-    public String getReceiverKey() {
-        return receiverKey;
-    }
 
     public int getValue() {
         return value;
@@ -34,9 +31,9 @@ public class Transaction {
     public String toString() {
         return "Transaction{" +
                 "id=" + id +
-                ", senderKey='" + senderKey + '\'' +
-                ", receiverKey='" + receiverKey + '\'' +
-                ", value=" + value +
+                ", senderKey='" + this.sender.getKey() + '\'' +
+                ", receiverKey='" + this.receiver.getKey() + '\'' +
+                ", value=" + this.value +
                 '}';
     }
 }

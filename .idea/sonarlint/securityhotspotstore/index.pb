@@ -25,8 +25,6 @@ K
 Practica_4/BlockConfig.java,d\3\d39050bdd44cfd88779cd4165faffc7bef601280
 D
 Practica_4/Node.java,2\b\2b611ae5c1794ad3a8b8cfc0721941f38af4aefa
-G
-Practica_4/Element.java,b\3\b32af72230bbf1ed7b81512252820e308a794689
 c
 3Practica_4/AdditionalFiles/TesterMainExercise1.java,6\e\6ea3960a44528b526e1a02cda92513f948afde2f
 F
@@ -41,8 +39,6 @@ L
 Practica_4/IConnectable.java,f\6\f67d0370b4c3c9321f25d0fe85a8e271ff6764c5
 G
 Practica_4/Message.java,b\0\b0b3a689281773cf00d742af0f4c6e23f39d5a88
-K
-Practica_4/Connectable.java,c\0\c0358143489448a4077692ef87af351d64c834b4
 W
 'Practica_4/TransactionNotification.java,1\a\1af3f7497a2547e7c193479d0e02e10bfe8869e4
 Z
@@ -53,3 +49,5 @@ S
 #Practica_4/ConnectionException.java,2\4\24906073cbf9f6e066f95b4af1efb5b2298eef3f
 \
 ,Practica_4/DuplicateConnectionException.java,4\7\47e41b69e9a09d50c19d3bd4f7630c31d1ae0f4b
+T
+$Practica_4/TransactionException.java,e\1\e1eae84975c87c95eb3f5c300260f34eb55eeb85
