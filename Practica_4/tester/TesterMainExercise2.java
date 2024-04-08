@@ -3,18 +3,17 @@ package Practica_4.tester;
 
 import Practica_4.*;
 import Practica_4.exception.*;
-
-public class TesterMainExercise2 extends TesterMainExercise1 {
-    public void buildFaultyNetwork() throws ConnectionException, DuplicateConnectionException {
+public class TesterMainExercise2 extends TesterMainExercise1{
+    public void buildFaultyNetwork() {
         super.buildNetwork();
         try {
             this.network.connect(this.node); // cannot connect: node already in the network
-        } catch (ConnectionException e) {
+        } catch (NodeConnectException e) {
             System.err.println(e);
         }
         try {
             this.network.connect(this.miningNode2); // cannot connect: miningNode in a subnet
-        } catch (DuplicateConnectionException e) {
+        } catch (NodeConnectException e) {
             System.err.println(e);
         }
     }
@@ -28,11 +27,9 @@ public class TesterMainExercise2 extends TesterMainExercise1 {
             System.err.println(e);
         }
     }
-    public static void main(String[] args) throws ConnectionException, DuplicateConnectionException {
+    public static void main(String[] args) {
         TesterMainExercise2 tme = new TesterMainExercise2();
         tme.buildFaultyNetwork();
         tme.createTransactions();
     }
 }
-
-

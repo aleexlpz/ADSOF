@@ -13,12 +13,12 @@ public class MiningNode extends Node{
     }
 
     public String fullName() {
-        return "@MiningNode#" + String.format("%03d", this.getId());
+        return "@MiningNode#" + this.getId();
     }
 
     @Override
     public String toString() {
-        return this.getWallet() + " | @MiningNode#" + String.format("%03d", this.getId());
+        return this.getWallet() + " | @MiningNode#" +  this.getId();
     }
 
 }

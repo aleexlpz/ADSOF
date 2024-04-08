@@ -1,12 +1,12 @@
 package Practica_4.exception;
-
-public class DuplicateConnectionException extends ConnectionException{
-    public DuplicateConnectionException(String message) {
-        super(message);
+import Practica_4.*;
+public class DuplicateConnectionException extends NodeConnectException{
+    public DuplicateConnectionException(Node n) {
+        super(n);
     }
 
     @Override
     public String toString() {
-        return "Connection exception: " +super.toString() + " is already connected to the network";
+        return super.toString() + " is already connected to the network";
     }
 }

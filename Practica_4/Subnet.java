@@ -1,19 +1,24 @@
 package Practica_4;
 import java.util.*;
 
-public class Subnet implements IConnectable{
-    private int id;
-    private static int nextId = 1;
+import Practica_4.exception.*;
+
+public class Subnet extends Element{
+
     private List<Node>  nodes;
 
     public Subnet(Node... nodes) {
-        this.id = nextId++;
         this.nodes = Arrays.asList(nodes);
 
     }
-
-    public int getId() {
-        return id;
+    @Override
+    public boolean nodoIncluido(Node n) throws ConnectionException{
+        for (Node node: this.nodes){
+            if (node == n) {
+                throw new ConnectionException(node);
+            }
+        }
+        return false;
     }
 
     public List<Node> getNodes() {
@@ -35,9 +40,12 @@ public class Subnet implements IConnectable{
     }
 
 
-
     @Override
     public String toString() {
-        return "Node network of " + nodes.size() + " nodes: " + nodes;
+        String s= "Node network of " + nodes.size() + " nodes: " ;
+        for (Node node: this.nodes) {
+            s += " ["+node.toString()+"]";
+        }
+        return s;
     }
 }

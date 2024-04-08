@@ -23,29 +23,23 @@ public class TesterMainExercise1 {
         subnet = new Subnet(miningNode2); // we could pass more nodes here
 //Create the network and connect the elements
         this.network = new BlockchainNetwork("ADSOF blockchain");
+        try {
+            network.connect(node)
+                    .connect(subnet)
+                    .connect(miningNode);
+        } catch (NodeConnectException e) {
+            System.err.println(e);
+        }
 
-        try {
-            network.connect(node);
-        } catch (ConnectionException e) {
-            System.err.println(e);
-        }
-        try {
-            network.connect(subnet);
-        } catch (DuplicateConnectionException e) {
-            System.err.println(e);
-        }
-        try {
-            network.connect(miningNode);
-        } catch (ConnectionException e) {
-            System.err.println(e);
-        }
-//        network.connect(node)
-//                .connect(subnet)
-//                .connect(miningNode);
 //create example transaction, which transfers 10 coins from wallet1 to wallet2
-        new Transaction(wallet1, wallet2, 10);
+        try{
+            new Transaction(wallet1, wallet2, 10);
+
+        }catch (TransactionException e){
+            System.err.println(e);
+        }
     }
-    public static void main(String[] args) throws ConnectionException, DuplicateConnectionException{
+    public static void main(String[] args) {
         TesterMainExercise1 tme = new TesterMainExercise1();
         tme.buildNetwork();
         System.out.println(tme.network);
