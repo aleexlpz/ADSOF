@@ -2,7 +2,7 @@ package Practica_4.exception;
 
 import Practica_4.*;
 
-public class TransactionException extends Exception {
+public class TransactionException extends RuntimeException {
     private Wallet emisor;
     private String receptor;
     private int cantidad;

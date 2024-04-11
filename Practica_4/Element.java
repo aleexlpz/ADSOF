@@ -19,5 +19,4 @@ public abstract class Element implements IConnectable{
     public abstract boolean nodoIncluido(Node n)throws ConnectionException, DuplicateConnectionException;
 
 
-
 }

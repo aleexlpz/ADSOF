@@ -23,13 +23,11 @@ public class TesterMainExercise1 {
         subnet = new Subnet(miningNode2); // we could pass more nodes here
 //Create the network and connect the elements
         this.network = new BlockchainNetwork("ADSOF blockchain");
-        try {
+
             network.connect(node)
                     .connect(subnet)
                     .connect(miningNode);
-        } catch (NodeConnectException e) {
-            System.err.println(e);
-        }
+
 
 //create example transaction, which transfers 10 coins from wallet1 to wallet2
         try{

@@ -3,12 +3,16 @@ package Practica_4.exception;
 
 import Practica_4.Node;
 
-public class ConnectionException extends NodeConnectException{
+public class ConnectionException extends RuntimeException{
+    private Node nodo;
+
     public ConnectionException(Node n) {
-        super(n);
+
+        this.nodo = n;
+
     }
     @Override
     public String toString() {
-        return super.toString()+ " is connected to a different network";
+        return "Connection exception: Node "+this.nodo.getId()+" is already connected to the network";
     }
 }
