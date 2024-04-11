@@ -12,10 +12,10 @@ public class Subnet extends Element{
 
     }
     @Override
-    public boolean nodoIncluido(Node n) throws ConnectionException{
+    public boolean nodoIncluido(Node n) throws DuplicateConnectionException{
         for (Node node: this.nodes){
             if (node == n) {
-                throw new ConnectionException(node);
+                throw new DuplicateConnectionException(node);
             }
         }
         return false;

@@ -1,20 +1,107 @@
 package Practica_4;
 
-/*Cuando una transacción es difundida por la red, debe ser gestionada por un nodo para ser convertida en un bloque. Este proceso se
-llama minado y lo realizan los nodos minadores. Para dar soporte a bloques, crea la clase Block que define la siguiente información:
-● Un identificador único de bloque.
-● El número de versión. Puedes darle como valor por defecto el del campo VERSION de la clase BlockConfig, que está incluida en los
-ficheros adicionales proporcionados en Moodle.
-● Nonce, que es un número aleatorio entre 0 y 1000 de un solo uso, usado para evitar ataques de replicación en las comunicaciones.
-● La marca temporal (timestamp) del momento en que se mina el nodo. En este tipo de entornos, el timestamp suele ser de tipo
-entero. Puedes usar (int) (new Date().getTime()/1000) para un timestamp basado en los segundos transcurridos desde el año 1970.
-● La dificultad de minar un bloque (que es un número). Puedes darle como valor inicial el del campo DIFFICULTY de la clase
-BlockConfig.
-● La transacción origen del bloque actual.
-● Un flag que indica si el bloque está validado.
-● El hash del bloque, que es de tipo String. Este hash debe calcularlo el nodo minador, es decir, no debe calcularse en la clase Block.
-● El bloque anterior al actual, que podrá ser nulo.
-Además, la clase MiningNode deberá guardar los bloques que ha validado.*/
+import Practica_4.utils.*;
+
+import java.util.*;
 
 public class Block {
+    private final Integer id;
+    private final int version;
+    private final int nonce;
+    private final int timestamp;
+    private final int difficulty;
+    private final Transaction transaction;
+    private boolean validated;
+    private String hash;
+    private Block previousBlock;
+
+    private ArrayList<Block> blocks;
+
+    private static int nextId = 0;
+
+    public Block(Transaction transaction) {
+        this.id = nextId++;
+        this.version = BlockConfig.VERSION;
+        this.nonce = (int) (Math.random() * 1000);
+        this.timestamp = (int) (new Date().getTime() / 1000);
+        this.difficulty = BlockConfig.DIFFICULTY;
+        this.transaction = transaction;
+        this.validated = false;
+        this.hash = "";
+        this.previousBlock = this.getPreviousBlock();
+        this.blocks = new ArrayList<>();
+        blocks.add(this);
+    }
+
+    public Integer getId() {
+        return id;
+    }
+
+    public int getVersion() {
+        return version;
+    }
+
+    public int getNonce() {
+        return nonce;
+    }
+
+    public int getTimestamp() {
+        return timestamp;
+    }
+
+    public int getDifficulty() {
+        return difficulty;
+    }
+
+    public Transaction getTransaction() {
+        return transaction;
+    }
+
+    public boolean isValidated() {
+        return validated;
+    }
+
+    public void setValidated(boolean validated) {
+        this.validated = validated;
+    }
+
+    public String getHash() {
+        return hash;
+    }
+
+    public void setHash(String hash) {
+        this.hash = hash;
+    }
+
+    public Block getPreviousBlock() {
+        for (Block block : blocks) {
+            if (block.getId() == id - 1) {
+                previousBlock = block;
+            }
+            else{
+                previousBlock = null;
+
+            }
+        }
+        return previousBlock;
+    }
+
+    public void setPreviousBlock(Block previousBlock) {
+        this.previousBlock = previousBlock;
+    }
+
+    @Override
+    public String toString() {
+        return "Block{" +
+                "id='" + id + '\'' +
+                ", version=" + version +
+                ", nonce=" + nonce +
+                ", timestamp=" + timestamp +
+                ", difficulty=" + difficulty +
+                ", transaction=" + transaction +
+                ", validated=" + validated +
+                ", hash='" + hash + '\'' +
+                ", previousBlock=" + previousBlock +
+                '}';
+    }
 }

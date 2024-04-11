@@ -1,19 +1,18 @@
 package Practica_4.tester;
-
-
 import Practica_4.*;
 import Practica_4.exception.*;
+
 public class TesterMainExercise2 extends TesterMainExercise1{
     public void buildFaultyNetwork() {
         super.buildNetwork();
         try {
             this.network.connect(this.node); // cannot connect: node already in the network
-        } catch (NodeConnectException e) {
+        } catch (ConnectionException e) {
             System.err.println(e);
         }
         try {
             this.network.connect(this.miningNode2); // cannot connect: miningNode in a subnet
-        } catch (NodeConnectException e) {
+        } catch (DuplicateConnectionException e) {
             System.err.println(e);
         }
     }

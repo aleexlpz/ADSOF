@@ -46,8 +46,7 @@ public class Wallet {
         this.balance = balance;
     }
     /**
-     * Metodo que devuelve el saldo del usuario
-     * @param balance Saldo del usuario
+     * Metodo que devuelve la clave pública del usuario
      */
     public Wallet getPublicKey() {
         return this;

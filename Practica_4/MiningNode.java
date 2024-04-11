@@ -1,5 +1,4 @@
 package Practica_4;
-
 public class MiningNode extends Node{
     private int cComputacional;
 
@@ -14,6 +13,10 @@ public class MiningNode extends Node{
 
     public String fullName() {
         return "@MiningNode#" + this.getId();
+    }
+
+    public void setMiningMethod(IMiningMethod miningMethod) {
+
     }
 
     @Override

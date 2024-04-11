@@ -38,6 +38,8 @@ public class Transaction {
         return value;
     }
 
+
+
     @Override
     public String toString() {
         return "Transaction " + this.id + "| from: " + this.senderkey + ", to: " + this.receiverkey + ", quantity: " + this.value;

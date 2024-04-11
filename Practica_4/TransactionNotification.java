@@ -17,6 +17,7 @@ public class TransactionNotification implements IMessage {
     public void process(Node n) {
         IMessage.super.process(n);
         n.addTransaction(tr1);
+        n.handleTransaction(tr1);
     }
 
 }

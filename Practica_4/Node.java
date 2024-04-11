@@ -6,15 +6,15 @@ import Practica_4.exception.*;
 public class Node extends Element{
 
     private Wallet wallet;
-    private boolean isMiner;
-    private int mips;
+
     private List<Transaction> transactions;
+    private List<Transaction> confirmedTransactions;
 
 
     public Node(Wallet wallet) {
         this.wallet = wallet;
-        this.isMiner = false;
         this.transactions = new ArrayList<>();
+        this.confirmedTransactions = new ArrayList<>();
     }
 
 
@@ -22,13 +22,6 @@ public class Node extends Element{
         return wallet;
     }
 
-    public boolean isMiner() {
-        return isMiner;
-    }
-
-    public int getMips() {
-        return mips;
-    }
 
     public List<Transaction> getTransactions() {
         return transactions;
@@ -55,19 +48,23 @@ public class Node extends Element{
         this.transactions.add(t);
         return t;
     }
+
+    public void handleTransaction(Transaction t){
+        this.transactions.remove(t);
+        this.confirmedTransactions.add(t);
+    }
+
     @Override
-    public boolean nodoIncluido(Node n)throws DuplicateConnectionException{
+    public boolean nodoIncluido(Node n) throws ConnectionException{
         if (this == n) {
-            throw new DuplicateConnectionException(n);
+            throw new ConnectionException(n);
         }
         return false;
     }
 
-
     public String fullName(){
         return "@Node#" + this.getId();
     }
-
 
     @Override
     public IConnectable getParent() {
@@ -76,6 +73,8 @@ public class Node extends Element{
 
     @Override
     public void broadcast(IMessage msg) {
+
+
         msg.process(this);
     }
 

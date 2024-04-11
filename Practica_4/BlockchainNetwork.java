@@ -20,7 +20,7 @@ public class BlockchainNetwork implements IConnectable{
         System.out.println("ADSOF blockchain - new peer connected: " + node);
         return this;
     }
-    public BlockchainNetwork connect(Subnet subnet) {
+    public BlockchainNetwork connect(Subnet subnet)  throws ConnectionException {
         if (this.elementos.contains(subnet)) {
             return null;
         }
