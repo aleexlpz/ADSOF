@@ -9,10 +9,10 @@ public class Transaction {
     private String receiverkey;
     private int value;
 
-
+    
 
     public Transaction(Wallet sender, Wallet receiver, int value) throws TransactionException{
-        this(sender, receiver.getKey(), value);
+        this(sender, receiver.getPublicKey(), value);
     }
 
     public Transaction(Wallet sender, String receiver, int value) throws TransactionException{
@@ -20,7 +20,7 @@ public class Transaction {
             throw new TransactionException(sender, receiver, value);
         }
         this.id = nextId++;
-        this.senderkey = sender.getKey();
+        this.senderkey = sender.getPublicKey();
         this.receiverkey = receiver;
         this.value = value;
     }
@@ -31,6 +31,10 @@ public class Transaction {
 
     public String getSender() {
         return senderkey;
+    }
+
+    public String getReceiver() {
+        return receiverkey;
     }
 
 

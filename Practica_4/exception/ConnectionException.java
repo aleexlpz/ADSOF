@@ -13,6 +13,6 @@ public class ConnectionException extends RuntimeException{
     }
     @Override
     public String toString() {
-        return "Connection exception: Node "+this.nodo.getId()+" is already connected to the network";
+        return "Connection exception: Node "+ String.format("%03d", this.nodo.getId())+" is already connected to the network";
     }
 }

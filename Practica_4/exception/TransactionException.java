@@ -16,6 +16,6 @@ public class TransactionException extends RuntimeException {
 
     @Override
     public String toString() {
-        return "Negative transfer attempt: source: "+this.emisor.getKey() + ", receiver: "+this.receptor+", amount: "+this.cantidad;
+        return "Negative transfer attempt: source: "+this.emisor.getPublicKey() + ", receiver: "+this.receptor+", amount: "+this.cantidad;
     }
 }

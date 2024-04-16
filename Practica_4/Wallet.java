@@ -24,13 +24,7 @@ public class Wallet {
     public String getUsername() {
         return username;
     }
-    /**
-     * Metodo que devuelve la clave pública del usuario
-     * @param key Clave pública del usuario
-     */
-    public String getKey() {
-        return key;
-    }
+    
     /**
      * Metodo que devuelve el saldo del usuario
      * @param balance Saldo del usuario
@@ -48,8 +42,8 @@ public class Wallet {
     /**
      * Metodo que devuelve la clave pública del usuario
      */
-    public Wallet getPublicKey() {
-        return this;
+    public String getPublicKey() {
+        return this.key;
     }
 
     @Override

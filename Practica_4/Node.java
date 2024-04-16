@@ -35,7 +35,7 @@ public class Node extends Element{
     public Transaction createTransaction(Wallet receiver, int value) throws TransactionException{
 
         if (this.wallet.getBalance() < value){
-            throw new TransactionException(this.wallet,receiver.getKey(), value);
+            throw new TransactionException(this.wallet,receiver.getPublicKey(), value);
         }
 
         Transaction t = new Transaction(this.wallet, receiver, value);
@@ -61,9 +61,8 @@ public class Node extends Element{
         }
         return false;
     }
-
     public String fullName(){
-        return "@Node#" + this.getId();
+        return "@Node#" + String.format("%03d", this.getId());
     }
 
     @Override
@@ -73,13 +72,13 @@ public class Node extends Element{
 
     @Override
     public void broadcast(IMessage msg) {
-
-
         msg.process(this);
     }
 
+    public void handleValidateBlockRq(ValidateBlockRq validateblockrq) {}
+
     @Override
     public String toString() {
-        return this.wallet + " | @Node#"+ this.getId();
+        return this.wallet + " | @Node#"+ String.format("%03d", this.getId());
     }
 }
