@@ -13,8 +13,9 @@ public class MiningNode extends Node{
     }
 
     public String fullName() {
-        return "@MiningNode#" + this.getId();
+        return "@MiningNode#" + String.format("%03d", this.getId());
     }
+
 
     public int getcComputacional() {
         return this.cComputacional;
@@ -61,10 +62,6 @@ public class MiningNode extends Node{
         else{
             System.out.println("["+this.fullName()+"] You cannot validate your own block");
         }
-
-
-
-
     }
 
     @Override
