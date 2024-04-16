@@ -10,6 +10,6 @@ public class DuplicateConnectionException extends RuntimeException{
     }
     @Override
     public String toString() {
-        return " Connection exception: Node "+this.nodo.getId()+" is connected to a different network";
+        return " Connection exception: Node "+ String.format("%03d", this.nodo.getId())+" is connected to a different network";
     }
 }

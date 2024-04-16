@@ -32,7 +32,7 @@ public class Subnet extends Element{
 
     @Override
     public void broadcast(IMessage msg) {
-        System.out.println("[Subnet#"+this.getId()+"] "+msg.getMessage());
+        System.out.println("[Subnet#"+String.format("%03d", this.getId())+"] "+msg.getMessage());
         System.out.println("Broadcasting to "+this.nodes.size()+" nodes:");
         for (Node nodo: this.nodes) {
             nodo.broadcast(msg);
