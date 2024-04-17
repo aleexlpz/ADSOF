@@ -17,10 +17,10 @@ public class Transaction {
     /**
      * Constructor de la clase Transaction
      * 
-     * @param sender
-     * @param receiver
-     * @param value
-     * @throws TransactionException
+     * @param sender wallet emisor
+     * @param receiver wallet receptor
+     * @param value valor de la transaccion
+     * @throws TransactionException excepcion de transaccion
      */
     public Transaction(Wallet sender, Wallet receiver, int value) throws TransactionException {
         this(sender, receiver.getPublicKey(), value);
@@ -29,10 +29,10 @@ public class Transaction {
     /**
      * Constructor de la clase Transaction
      * 
-     * @param sender
-     * @param receiver
-     * @param value
-     * @throws TransactionException
+     * @param sender wallet emisor
+     * @param receiver receptor
+     * @param value valor de la transaccion
+     * @throws TransactionException excepcion de transaccion
      */
     public Transaction(Wallet sender, String receiver, int value) throws TransactionException {
         if (value < 0) {
@@ -83,8 +83,6 @@ public class Transaction {
 
     /**
      * Metodo toString de la clase Transaction
-     * 
-     * @param value
      */
     @Override
     public String toString() {

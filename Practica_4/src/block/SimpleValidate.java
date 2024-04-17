@@ -8,7 +8,6 @@ import interfaces.*;
  * @author Alejandro López Martínez y Sofía García Héras
  * 
  */
-
 public class SimpleValidate implements IValidateMethod {
 
     /**

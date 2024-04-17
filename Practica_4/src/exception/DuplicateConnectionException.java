@@ -16,7 +16,6 @@ public class DuplicateConnectionException extends RuntimeException {
      * Constructor de la excepción
      * 
      * @param n Nodo que ha generado la excepción
-     * @return Excepción de conexión duplicada
      */
     public DuplicateConnectionException(Node n) {
 

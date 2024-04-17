@@ -21,9 +21,8 @@ public class MiningNode extends Node {
 
     /**
      * Constructor de la clase MiningNode
-     * 
-     * @param wallet         cartera de divisas
-     * @param cComputacional
+     * @param wallet cartera de divisas
+     * @param cComputacional coste computacional
      */
     public MiningNode(Wallet wallet, int cComputacional) {
         super(wallet);
@@ -44,7 +43,7 @@ public class MiningNode extends Node {
     /**
      * Metodo que establece el coste computacional
      * 
-     * @param cComputacional
+     * @param cComputacional coste computacional
      */
     public void setcComputacional(int cComputacional) {
         this.cComputacional = cComputacional;
@@ -71,7 +70,7 @@ public class MiningNode extends Node {
     /**
      * Metodo que establece el metodo de minado
      * 
-     * @param simpleMining
+     * @param simpleMining metodo de minado
      */
     public void setMiningMethod(SimpleMining simpleMining) {
         this.miningMethod = simpleMining;
@@ -80,7 +79,7 @@ public class MiningNode extends Node {
     /**
      * Metodo que establece el metodo de validacion
      * 
-     * @param simpleValidate
+     * @param simpleValidate metodo de validacion
      */
     public void setValidationMethod(SimpleValidate simpleValidate) {
         this.validateMethod = simpleValidate;

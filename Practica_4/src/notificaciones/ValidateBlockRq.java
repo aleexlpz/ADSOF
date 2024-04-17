@@ -18,7 +18,6 @@ public class ValidateBlockRq implements IMessage {
      * 
      * @param block      Bloque a validar
      * @param miningNode Nodo minero que envia la solicitud
-     * @return Objeto de la clase ValidateBlockRq
      */
     public ValidateBlockRq(Block block, MiningNode miningNode) {
         this.block = block;
@@ -57,7 +56,6 @@ public class ValidateBlockRq implements IMessage {
      * Metodo que procesa la solicitud
      * 
      * @param n Nodo que procesa la solicitud
-     * @return void
      */
     @Override
     public void process(Node n) {

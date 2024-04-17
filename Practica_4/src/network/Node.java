@@ -19,8 +19,7 @@ public class Node extends Element {
 
     /**
      * Constructor de la clase Node
-     * 
-     * @param wallet
+     * @param wallet cartera de divisas
      */
     public Node(Wallet wallet) {
         this.wallet = wallet;
@@ -39,8 +38,7 @@ public class Node extends Element {
 
     /**
      * Metodo que devuelve las transacciones del nodo
-     * 
-     * @return List<Transaction>
+     * @return lista de transacciones
      */
     public List<Transaction> getTransactions() {
         return transactions;
@@ -85,11 +83,9 @@ public class Node extends Element {
 
     /**
      * Metodo que crea una transaccion
-     * 
-     * @return Transaction
      * @param receiver receptor de la transaccion
      * @param value    valor de la transaccion
-     * @throws TransactionException
+     * @throws TransactionException excepcion de transacciones
      */
     public Transaction createTransaction(Wallet receiver, int value) throws TransactionException {
 
@@ -107,7 +103,7 @@ public class Node extends Element {
      * @param receiver receptor de la transaccion
      * @param value    valor de la transaccion
      * @return Transaction
-     * @throws TransactionException
+     * @throws TransactionException excepcion de transacciones
      */
     public Transaction createTransaction(String receiver, int value) throws TransactionException {
         if (this.wallet.getBalance() < value) {
@@ -122,7 +118,7 @@ public class Node extends Element {
      * 
      * @param n nodo
      * @return true si esta incluido, false si no
-     * @throws ConnectionException
+     * @throws ConnectionException excepcion de conexion
      */
     @Override
     public boolean nodoIncluido(Node n) throws ConnectionException {
@@ -150,7 +146,7 @@ public class Node extends Element {
     /**
      * Metodo que maneja una notificacion de transaccion
      * 
-     * @param t
+     * @param tnot TransactionNotification
      */
     public void handleTransactionNotification(TransactionNotification tnot) {
     }
@@ -158,11 +154,15 @@ public class Node extends Element {
     /**
      * Metodo que se encarga de manejar la validacion de bloque request
      * 
-     * @param validateblockrq
+     * @param validateblockrq bloque a validar request
      */
     public void handleValidateBlockRq(ValidateBlockRq validateblockrq) {
     }
 
+    /**
+     * Metodo que se encarga de manejar la validacion de bloque response
+     * @param validateblockres bloque a validar response
+     */
     public void handleValidateBlockRes(ValidateBlockRes validateblockres) {
         Block block = validateblockres.getBlock();
         Transaction transaction = block.getTransaction();

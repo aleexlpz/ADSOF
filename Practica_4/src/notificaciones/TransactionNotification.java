@@ -2,7 +2,11 @@ package notificaciones;
 
 import interfaces.*;
 import network.*;
-
+/**
+ * Clase que representa una notificacion de transaccion
+ *
+ * @autor Sofia Garcia y Alejandro Lopez
+ */
 public class TransactionNotification implements IMessage {
     private Transaction tr1;
 
@@ -38,7 +42,6 @@ public class TransactionNotification implements IMessage {
      * metodo para procesar la notificacion
      * 
      * @param n Nodo que recibe la notificacion
-     * @return void
      */
     public void process(Node n) {
         System.out.println(

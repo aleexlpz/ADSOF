@@ -16,8 +16,7 @@ public class BlockchainNetwork implements IConnectable {
 
     /**
      * Constructor de la clase BlockchainNetwork
-     * 
-     * @param name
+     * @param name nombre de la red
      */
     public BlockchainNetwork(String name) {
         this.name = name;
@@ -27,10 +26,9 @@ public class BlockchainNetwork implements IConnectable {
     /**
      * Metodo que conecta un nodo a la red
      * 
-     * @param node
-     * @return BlockchainNetwork
-     * @throws ConnectionException
-     * @throws DuplicateConnectionException
+     * @param e nodo a conectar
+     * @throws ConnectionException excepcion de conexion
+     * @throws DuplicateConnectionException excepcion de conexion duplicada
      */
     public BlockchainNetwork connect(Element e) throws ConnectionException, DuplicateConnectionException {
         System.out.print(this.name + " - new peer connected: ");
@@ -55,9 +53,9 @@ public class BlockchainNetwork implements IConnectable {
     /**
      * Metodo que comprueba si un nodo esta incluido en la red
      * 
-     * @param node
-     * @return BlockchainNetwork
-     * @throws ConnectionException
+     * @param node nodo a comprobar
+     * @throws ConnectionException excepcion de conexion
+     * @throws DuplicateConnectionException excepcion de conexion duplicada
      */
     public boolean nodoIncluido(Node nodo) throws ConnectionException, DuplicateConnectionException {
         for (Element element : this.elementos) {
@@ -77,7 +75,6 @@ public class BlockchainNetwork implements IConnectable {
 
     /**
      * Metodo getter que devuelve los elementos de la red
-     * 
      * @return elementos de la red
      */
     public List<Element> getElementos() {

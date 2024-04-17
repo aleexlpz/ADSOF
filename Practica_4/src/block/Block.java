@@ -27,9 +27,7 @@ public class Block {
 
     /**
      * Constructor de la clase Block
-     * 
      * @param transaction   transacción que se va a añadir al bloque
-     * @param previousBlock bloque anterior al bloque actual
      */
     public Block(Transaction transaction) {
         this.id = nextId++;
@@ -150,7 +148,6 @@ public class Block {
      * Setter para hash del bloque
      * 
      * @param hash hash del bloque
-     * @return hash del bloque
      */
     public void setHash(String hash) {
         this.hash = hash;
@@ -170,7 +167,6 @@ public class Block {
      * Setter para bloque anterior
      * 
      * @param previousBlock bloque anterior
-     * @return bloque anterior
      */
     public void setPreviousBlock(Block previousBlock) {
         this.previousBlock = previousBlock;

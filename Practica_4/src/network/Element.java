@@ -43,9 +43,9 @@ public abstract class Element implements IConnectable {
      * Metodo abstracto que comprueba si un nodo esta incluido en la red
      * 
      * @param n Nodo a comprobar
-     * @return boolean
-     * @throws ConnectionException
-     * @throws DuplicateConnectionException
+     * @return true si esta incluido, false si no
+     * @throws ConnectionException exception de conexion
+     * @throws DuplicateConnectionException exception de conexion duplicada
      */
     public abstract boolean nodoIncluido(Node n) throws ConnectionException, DuplicateConnectionException;
 

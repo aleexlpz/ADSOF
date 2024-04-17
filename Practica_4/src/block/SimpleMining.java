@@ -11,17 +11,15 @@ import utils.*;
  * 
  */
 public class SimpleMining implements IMiningMethod {
+
     /**
      * Constructor de la clase SimpleMining.
-     * 
-     * @param block Bloque a minar.
      */
     public SimpleMining() {
     }
 
     /**
      * Método que crea el hash de un bloque.
-     * 
      * @param block Bloque al que se le va a crear el hash.
      * @return Hash del bloque.
      */

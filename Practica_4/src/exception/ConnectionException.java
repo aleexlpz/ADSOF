@@ -15,7 +15,6 @@ public class ConnectionException extends RuntimeException {
      * Constructor de la excepción
      * 
      * @param n Nodo que ha lanzado la excepción
-     * @return ConnectionException
      */
     public ConnectionException(Node n) {
         this.nodo = n;

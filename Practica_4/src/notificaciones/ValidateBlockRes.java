@@ -3,7 +3,11 @@ package notificaciones;
 import block.*;
 import interfaces.*;
 import network.*;
-
+/**
+ * Clase que representa un mensaje de resultado de validar un bloque
+ *
+ * @autor Sofia Garcia y Alejandro Lopez
+ */
 public class ValidateBlockRes implements IMessage {
 
     private Block block;
@@ -16,7 +20,6 @@ public class ValidateBlockRes implements IMessage {
      * @param block bloque a validar
      * @param res   resultado de validar
      * @param src   nodo que envia el mensaje
-     * @return mensaje de resultado de validar
      */
     public ValidateBlockRes(Block block, boolean res, int src) {
         this.block = block;

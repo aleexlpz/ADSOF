@@ -17,7 +17,7 @@ public class Subnet extends Element {
     /**
      * Constructor de la clase Subnet
      * 
-     * @param nodes
+     * @param nod nodos de la subred
      */
     public Subnet(Node... nod) {
         this.nodes = new ArrayList<Node>();
@@ -33,7 +33,7 @@ public class Subnet extends Element {
     /**
      * Metodo que devuelve los nodos de la subred
      * 
-     * @return List<Node>
+     * @return lista de nodos
      */
     public List<Node> getNodes() {
         return nodes;
@@ -71,7 +71,7 @@ public class Subnet extends Element {
      * 
      * @param n Nodo a comprobar
      * @return true si esta incluido, false si no
-     * @throws DuplicateConnectionException
+     * @throws DuplicateConnectionException excepcion de conexion duplicada
      */
     @Override
     public boolean nodoIncluido(Node n) throws DuplicateConnectionException {
@@ -87,7 +87,7 @@ public class Subnet extends Element {
     /**
      * Metodo que conecta un nodo a la subred
      * 
-     * @param n Nodo a conectar
+     * @param msg Mensaje de conexion
      * @return void
      */
     @Override

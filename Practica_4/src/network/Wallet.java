@@ -26,8 +26,8 @@ public class Wallet {
 
     /**
      * Metodo que devuelve el nombre del usuario
-     * 
-     * @param username Nombre del usuario
+     *
+     * @return Nombre del usuario
      */
     public String getUsername() {
         return username;
@@ -35,8 +35,8 @@ public class Wallet {
 
     /**
      * Metodo que devuelve el saldo del usuario
-     * 
-     * @param balance Saldo del usuario
+     *
+     * @return Saldo del usuario
      */
     public int getBalance() {
         return balance;
@@ -53,6 +53,8 @@ public class Wallet {
 
     /**
      * Metodo que devuelve la clave pública del usuario
+     *
+     * @return Clave pública del usuario
      */
     public String getPublicKey() {
         return this.key;

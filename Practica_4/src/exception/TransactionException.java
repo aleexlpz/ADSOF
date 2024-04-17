@@ -18,7 +18,6 @@ public class TransactionException extends RuntimeException {
      * @param emisor   Wallet que intenta enviar la transacción
      * @param receptor Wallet que recibe la transacción
      * @param cantidad Cantidad de monedas a enviar
-     * @return Excepción de transacción
      */
     public TransactionException(Wallet emisor, String receptor, int cantidad) {
         this.emisor = emisor;
