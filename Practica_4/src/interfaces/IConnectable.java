@@ -1,5 +1,11 @@
 package interfaces;
 
+/**
+ * Interfaz que se encarga de enviar y recibir mensajes entre los nodos de la
+ * red.
+ * 
+ * @author Alejandro Lopez y Sofia Garcia
+ */
 public interface IConnectable {
     public void broadcast(IMessage msg);
 

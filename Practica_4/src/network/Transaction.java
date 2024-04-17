@@ -2,6 +2,11 @@ package network;
 
 import exception.*;
 
+/**
+ * Clase que representa una transaccion de la red
+ * 
+ * @author Alejandro Lopez y Sofia Garcia
+ */
 public class Transaction {
     private int id;
     private static int nextId = 0;
@@ -9,14 +14,28 @@ public class Transaction {
     private String receiverkey;
     private int value;
 
-    
-
-    public Transaction(Wallet sender, Wallet receiver, int value) throws TransactionException{
+    /**
+     * Constructor de la clase Transaction
+     * 
+     * @param sender wallet emisor
+     * @param receiver wallet receptor
+     * @param value valor de la transaccion
+     * @throws TransactionException excepcion de transaccion
+     */
+    public Transaction(Wallet sender, Wallet receiver, int value) throws TransactionException {
         this(sender, receiver.getPublicKey(), value);
     }
 
-    public Transaction(Wallet sender, String receiver, int value) throws TransactionException{
-        if (value <0){
+    /**
+     * Constructor de la clase Transaction
+     * 
+     * @param sender wallet emisor
+     * @param receiver receptor
+     * @param value valor de la transaccion
+     * @throws TransactionException excepcion de transaccion
+     */
+    public Transaction(Wallet sender, String receiver, int value) throws TransactionException {
+        if (value < 0) {
             throw new TransactionException(sender, receiver, value);
         }
         this.id = nextId++;
@@ -25,27 +44,49 @@ public class Transaction {
         this.value = value;
     }
 
+    /**
+     * Metodo que devuelve el id de la transaccion
+     * 
+     * @return id
+     */
     public int getId() {
         return id;
     }
 
+    /**
+     * Metodo que devuelve el emisor de la transaccion
+     * 
+     * @return emisor
+     */
     public String getSender() {
         return senderkey;
     }
+
+    /**
+     * Metodo que devuelve el receptor de la transaccion
+     * 
+     * @return receptor
+     */
 
     public String getReceiver() {
         return receiverkey;
     }
 
-
+    /**
+     * Metodo que devuelve el valor de la transaccion
+     * 
+     * @return valor
+     */
     public int getValue() {
         return value;
     }
 
-
-
+    /**
+     * Metodo toString de la clase Transaction
+     */
     @Override
     public String toString() {
-        return "Transaction " + this.id + "| from: " + this.senderkey + ", to: " + this.receiverkey + ", quantity: " + this.value;
+        return "Transaction " + this.id + "| from: " + this.senderkey + ", to: " + this.receiverkey + ", quantity: "
+                + this.value;
     }
 }
