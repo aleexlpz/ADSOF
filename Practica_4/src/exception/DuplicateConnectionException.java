@@ -1,4 +1,5 @@
 package exception;
+
 import network.*;
 
 /**
@@ -8,11 +9,12 @@ import network.*;
  * 
  */
 
-public class DuplicateConnectionException extends RuntimeException{
+public class DuplicateConnectionException extends RuntimeException {
     private Node nodo;
 
     /**
      * Constructor de la excepción
+     * 
      * @param n Nodo que ha generado la excepción
      * @return Excepción de conexión duplicada
      */
@@ -24,10 +26,12 @@ public class DuplicateConnectionException extends RuntimeException{
 
     /**
      * Método que devuelve el mensaje de la excepción
+     * 
      * @return Mensaje de la excepción
      */
     @Override
     public String toString() {
-        return " Connection exception: Node "+ String.format("%03d", this.nodo.getId())+" is connected to a different network";
+        return " Connection exception: Node " + String.format("%03d", this.nodo.getId())
+                + " is connected to a different network";
     }
 }

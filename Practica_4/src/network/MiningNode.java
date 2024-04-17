@@ -85,15 +85,17 @@ public class MiningNode extends Node {
     public void setValidationMethod(SimpleValidate simpleValidate) {
         this.validateMethod = simpleValidate;
     }
+
     /**
      * Metodo que devuelve el bloque anterior
+     * 
      * @return Block
      */
-    public Block getPreviousBlock(){
-        if(blocks.isEmpty()== true){
+    public Block getPreviousBlock() {
+        if (blocks.isEmpty() == true) {
             return null;
         }
-        return blocks.get(blocks.size()-1);
+        return blocks.get(blocks.size() - 1);
     }
 
     /**
@@ -104,64 +106,58 @@ public class MiningNode extends Node {
     public String fullName() {
         return "@MiningNode#" + String.format("%03d", this.getId());
     }
-     /**
+
+    /**
      * Metodo que maneja una transaccion
-     * @param t
+     * 
+     * @param tnot notificacion de transaccion
      */
-    public void handleTransactionNotification(TransactionNotification tnot){
+    @Override
+    public void handleTransactionNotification(TransactionNotification tnot) {
         Transaction t = tnot.getTransaction();
         IConnectable network = this.getTopParent();
 
-        if(this.getTransactions().contains(t)){
+        if (this.getTransactions().contains(t)) {
             System.out.println("[" + this.fullName() + "] Transaction already confirmed: Tx-" + t.getId());
         }
 
-        if(!this.getTransactions().contains(t) ){
-            Block block= miningMethod.mineBlock(t, this.getPreviousBlock(), this.getWallet().getPublicKey());
-            
+        if (!this.getTransactions().contains(t) && miningMethod != null) {
+            Block block = miningMethod.mineBlock(t, this.getPreviousBlock(), this.getWallet().getPublicKey());
             blocks.add(block);
             block.setPreviousBlock(block);
 
-            System.out.println("[" + this.fullName() + "] Mined Block: "+ block.toString());
+            System.out.println("[" + this.fullName() + "] Mined block: " + block.toString());
             network.broadcast(new ValidateBlockRq(block, this));
         }
     }
 
-
     /**
      * Metodo que se encarga de controlar la validacion de bloques
+     * 
      * @param validateblockrq peticion de validacion de bloque
      */
     @Override
     public void handleValidateBlockRq(ValidateBlockRq validateblockrq) {
-
         IConnectable network = this.getTopParent();
 
         if (this != validateblockrq.getMiningNode()) {
             Block block = validateblockrq.getBlock();
             boolean res = this.validateMethod.validate(miningMethod, block);
+            block.setValidated(res);
+
             ValidateBlockRes validateBlockRes = new ValidateBlockRes(block, res, this.getId());
             System.out.println(
                     String.format(
                             "[" + this.fullName() + "] " +
                                     "Emitted Task: ValidateBlockRes: <b:" +
-                                    block.getId() + ", src:%03d" + ">",
-                            validateblockrq.getMiningNode().getId()));
+                                    block.getId() + ", res:" + block.isValidated() + ", src:%03d" + ">",
+                            this.getId()));
             network.broadcast(validateBlockRes);
         } else {
-            System.out.println("[" + this.fullName() + "] You cannot validate your own block");
-        }
-    }
-
-    @Override
-    public void handleValidateBlockRes(ValidateBlockRes validateblockres) {
-        Block block = validateblockres.getBlock();
-        boolean res = validateblockres.getRes();
-        int id = validateblockres.getsrc();
-        if (res) {
-            System.out.println("[" + this.fullName() + "] Block " + block.getId() + " validated by " + id);
-        } else {
-            System.out.println("[" + this.fullName() + "] Block " + block.getId() + " not validated by " + id);
+            if (validateMethod != null) {
+                System.out.println("[" + this.fullName() + "] You cannot validate your own block");
+                return;
+            }
         }
     }
 

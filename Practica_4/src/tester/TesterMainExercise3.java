@@ -1,8 +1,7 @@
 package tester;
 
-import notificaciones.TransactionNotification;
-import block.SimpleMining;
-import block.SimpleValidate;
+import notificaciones.*;
+import block.*;
 
 public class TesterMainExercise3 extends TesterMainExercise2{
     public void createTransactions() {
