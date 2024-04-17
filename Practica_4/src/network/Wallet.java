@@ -1,6 +1,8 @@
 package network;
-
-
+/**
+ * Clase que representa una cartera de divisas de un usuario de la red
+ * @author Alejandro Lopez y Sofia Garcia
+ */
 public class Wallet {
     private String username;
     private String key;
@@ -45,7 +47,9 @@ public class Wallet {
     public String getPublicKey() {
         return this.key;
     }
-
+    /**
+     * Metodo toString de la clase Wallet
+     */
     @Override
     public String toString() {
         return "u: " + username + ", PK:" + key + ", balance: " + balance;

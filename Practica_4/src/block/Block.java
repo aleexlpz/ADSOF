@@ -2,8 +2,14 @@ package block;
 
 import network.Transaction;
 import utils.*;
-
 import java.util.*;
+
+/**
+ * Clase que representa un bloque de la cadena de bloques
+ * 
+ * @author Alejandro López Martínez y Sofía García Héras
+ *
+ */
 
 public class Block {
     private final int id;
@@ -19,7 +25,11 @@ public class Block {
     private ArrayList<Block> blocks;
 
     private static int nextId = 0;
-
+    /**
+     * Constructor de la clase Block
+     * @param transaction transacción que se va a añadir al bloque
+     * @param previousBlock bloque anterior al bloque actual
+     */
     public Block(Transaction transaction) {
         this.id = nextId++;
         this.version = BlockConfig.VERSION;
@@ -97,15 +107,25 @@ public class Block {
     public void setValidated(boolean validated) {
         this.validated = validated;
     }
-
+    /**
+     * Getter para hash del bloque
+     * @return hash del bloque
+     */
     public String getHash() {
         return hash;
     }
-
+    /**
+     * Setter para hash del bloque
+     * @param hash hash del bloque
+     * @return hash del bloque
+     */
     public void setHash(String hash) {
         this.hash = hash;
     }
-
+    /**
+     * Getter para bloque anterior
+     * @return bloque anterior
+     */
     public Block getPreviousBlock() {
         for (Block block : blocks) {
             if (block.getId() == id - 1) {
@@ -118,11 +138,18 @@ public class Block {
         }
         return previousBlock;
     }
-
+    /**
+     * Setter para bloque anterior
+     * @param previousBlock bloque anterior
+     * @return bloque anterior
+     */
     public void setPreviousBlock(Block previousBlock) {
         this.previousBlock = previousBlock;
     }
-
+    /**
+     * Getter para lista de bloques
+     * @return lista de bloques
+     */
     @Override
     public String toString() {
         return "Block{" +

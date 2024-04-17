@@ -13,6 +13,10 @@ public class ValidateBlockRes implements IMessage {
 
     /**
      * Constructor de mensaje de resultado de validar un bloque
+     * @param block bloque a validar
+     * @param res resultado de validar
+     * @param src nodo que envia el mensaje
+     * @return mensaje de resultado de validar
      */
     public ValidateBlockRes(Block block, boolean res, int src) {
         this.block = block;
@@ -37,6 +41,10 @@ public class ValidateBlockRes implements IMessage {
      */
     public boolean getRes() {
         return this.res;
+    }
+
+    public int getsrc() {
+        return this.src;
     }
 
     /**

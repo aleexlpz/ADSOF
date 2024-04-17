@@ -3,15 +3,34 @@ import java.util.*;
 
 import exception.*;
 import interfaces.*;
-
+/**
+ * Clase que representa una subred de nodos
+ * @author Alejandro Lopez y Sofia Garcia
+ */
 public class Subnet extends Element {
 
     private List<Node>  nodes;
-
+    /**
+     * Constructor de la clase Subnet
+     * @param nodes
+     */
     public Subnet(Node... nodes) {
         this.nodes = Arrays.asList(nodes);
 
     }
+    /**
+     * Metodo que devuelve los nodos de la subred
+     * @return List<Node>
+     */
+    public List<Node> getNodes() {
+        return nodes;
+    }
+    /**
+     * Metodo que comprueba si un nodo esta incluido en la subred
+     * @param n Nodo a comprobar
+     * @return true si esta incluido, false si no
+     * @throws DuplicateConnectionException
+     */
     @Override
     public boolean nodoIncluido(Node n) throws DuplicateConnectionException{
         for (Node node: this.nodes){
@@ -21,11 +40,7 @@ public class Subnet extends Element {
         }
         return false;
     }
-
-    public List<Node> getNodes() {
-        return nodes;
-    }
-
+    /*METODOS DE LA INTERFAZ ICONNECTABLE */
     @Override
     public IConnectable getParent() {
         return null;
@@ -40,7 +55,9 @@ public class Subnet extends Element {
         }
     }
 
-
+    /**
+     * Metodo toString de la clase Subnet
+     */
     @Override
     public String toString() {
         String s= "Node network of " + nodes.size() + " nodes: " ;
