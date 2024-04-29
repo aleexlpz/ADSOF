@@ -1,8 +1,8 @@
-package otros;
+package Practica_5.src.otros;
 public enum RegistrationKind {
 	FULL (1100), MEMBER (900), STUDENT (450);
 
-	private int price;
+	private final int price;
 
 	RegistrationKind(int price) {
 		this.price = price;

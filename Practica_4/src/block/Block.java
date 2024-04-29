@@ -17,7 +17,7 @@ public class Block {
     private int nonce;
     private int timestamp;
     private int difficulty;
-    private Transaction transaction;
+    private network.Transaction transaction;
     private boolean validated;
     private String hash;
     private Block previousBlock;

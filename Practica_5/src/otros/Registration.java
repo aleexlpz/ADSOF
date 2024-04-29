@@ -1,45 +1,55 @@
-package otros;
+package Practica_5.src.otros;
+
+import java.util.*;
+
 public class Registration {
-	private String name, affiliation;
-	private RegistrationKind kind;
-	private int amountPayed;
-	private boolean validated;
-	
-	
-	public Registration(String name, RegistrationKind kind) {
-		this.kind = kind;
-		this.name = name;
-	}
-	
-	public void pay (double amount) {		
-		this.amountPayed+=amount;
-	}
+    private final String name;
+    private String affiliation;
+    private final RegistrationKind kind;
+    private double amountPayed;
+    private boolean validated;
 
-	public double getAmountPayed() {
-		return this.amountPayed;
-	}
+    private static final List<StateObserver> observers = new ArrayList<>();
 
-	public double getTotalAmount() {
-		return this.kind.getPrice();
-	}
+    public Registration(String name, RegistrationKind kind) {
+        this.name = name;
+        this.kind = kind;
+    }
 
-	public String getAffiliation() {
-		return this.affiliation;
-	}
-	
-	public void setAffiliation(String aff) {
-		this.affiliation = aff;
-	}
+    public void pay(double amount) {
+        amountPayed += amount;
+    }
 
-	public boolean getValidated() {
-		return this.validated;
-	}
-	
-	public String toString() {
-		return "Reg. of: "+this.name;
-	}
+    public double getAmountPayed() {
+        return amountPayed;
+    }
 
-	public void setValidated(boolean b) {
-		this.validated = b;
-	}
+    public double getTotalAmount() {
+        return kind.getPrice();
+    }
+
+    public String getAffiliation() {
+        return affiliation;
+    }
+
+    public void setAffiliation(String affiliation) {
+        this.affiliation = affiliation;
+    }
+
+    public boolean getValidated() {
+        return validated;
+    }
+
+    public static void withTracker(StateObserver observer) {
+        observers.add(observer);
+    }
+
+    @Override
+    public String toString() {
+        return "Reg. of: " + name;
+    }
+
+    public void setValidated(boolean validated) {
+        this.validated = validated;
+    }
 }
