@@ -1,11 +1,11 @@
-package Practica_5.src.otros;
+package state;
 
 import java.util.*;
 import java.util.function.Predicate;
 
-public class ObjectStateTracker<T, S extends Enum<S>> implements Iterable<T>, StateObserver {
-    private final Map<S, List<T>> stateMap = new HashMap<>();
-    private final Set<S> validStates = new HashSet<>();
+public class ObjectStateTracker<T, S extends Enum<S>> implements Iterable<T>, StateIterable {
+    private final Map<S, List<T>> stateMap = new LinkedHashMap<>();
+    private final Set<S> validStates = new LinkedHashSet<>();
     private final Map<Predicate<T>, S> conditions = new HashMap<>();
     private final Map<T, S> elementStates = new HashMap<>();
     private final Map<T, List<StateChange<S>>> trajectories = new HashMap<>();
@@ -36,8 +36,8 @@ public class ObjectStateTracker<T, S extends Enum<S>> implements Iterable<T>, St
     }
 
     private void updateStates(T element) {
-        S currentState = elementStates.get(element);
-        for (Map.Entry<Predicate<T>, S> entry : conditions.entrySet()) {
+        S currentState = this.elementStates.get(element);
+        for (Map.Entry<Predicate<T>, S> entry : this.conditions.entrySet()) {
             if (entry.getKey().test(element)) {
                 S newState = entry.getValue();
                 if (currentState != newState) {
@@ -46,18 +46,18 @@ public class ObjectStateTracker<T, S extends Enum<S>> implements Iterable<T>, St
                 return;
             }
         }
-        if (currentState != defaultState) {
-            updateTrajectory(element, currentState, defaultState);
+        if (currentState != this.defaultState) {
+            updateTrajectory(element, currentState, this.defaultState);
         }
     }
 
     private void updateTrajectory(T element, S oldState, S newState) {
-        trajectories.get(element).add(new StateChange<>(oldState, newState));
+        this.trajectories.get(element).add(new StateChange<>(oldState, newState));
         if (oldState != null) {
-            stateMap.get(oldState).remove(element);
+            this.stateMap.get(oldState).remove(element);
         }
-        stateMap.get(newState).add(element);
-        elementStates.put(element, newState);
+        this.stateMap.get(newState).add(element);
+        this.elementStates.put(element, newState);
     }
 
     private void checkState(S state) {
@@ -66,15 +66,15 @@ public class ObjectStateTracker<T, S extends Enum<S>> implements Iterable<T>, St
         }
     }
 
-    @SafeVarargs
     public final void addObjects(T... objects) {
         for (T object : objects) {
-            if (!this.elementStates.containsKey(object)) {
+             if (!this.elementStates.containsKey(object)) {
                 this.elementStates.put(object, null);
                 this.trajectories.put(object, new ArrayList<>());
                 this.updateStates(object);
-            }
+            } 
         }
+       
     }
 
     public List<StateChange<S>> trajectory(T object) {
