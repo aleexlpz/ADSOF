@@ -1,16 +1,25 @@
 package state;
 
 import java.util.*;
-
+/**
+ * Clase proceso agrega todas las posibles transiciones efectuadas por los objetos
+ * @author Alejandro López Martínez y Sofía García Héras
+ */
 public class Process<S extends Comparable<S>> {
     private final Map<S, List<S>> stateTransitions = new LinkedHashMap<>();
     private final Map<S, Integer> initialStatesFrequency = new HashMap<>();
     private final Map<S, Integer> finalStatesFrequency = new HashMap<>();
-
+    /**
+     * Constructor de la clase Process
+     * @param states Estados
+     */
     public Process(S[] states) {        
         initializeStates(states);
     }
-
+    /**
+     * Método que inicializa los estados
+     * @param states Estados
+     */
     private void initializeStates(S[] states) {
         for (S state : states) {
             this.stateTransitions.put(state, new ArrayList<>());
@@ -18,7 +27,10 @@ public class Process<S extends Comparable<S>> {
             this.finalStatesFrequency.put(state, 0);
         }
     }
-
+    /**
+     * Método que añade una transición
+     * @param trajectory Trayectoria
+     */
     public void add(List<StateChange<S>> trajectory) {
         S previousState = null;
         S newState = null;
@@ -31,13 +43,22 @@ public class Process<S extends Comparable<S>> {
         }
         this.finalStatesFrequency.put(newState, this.finalStatesFrequency.get(newState) + 1);
     }
+    /**
+     * Método que actualiza los estados iniciales y finales
+     * @param previousState Estado anterior
+     * @param newState Nuevo estado
+     */
     private void updateInitialAndFinalStates(S previousState, S newState) {
         if (previousState == null) {
             this.initialStatesFrequency.put(newState, this.initialStatesFrequency.get(newState) + 1);
         }
          
     }
-
+    /**
+     * Método que añade un cambio de estado
+     * @param previousState Estado anterior
+     * @param newState Nuevo estado
+     */
     private void addStateChange(S previousState, S newState) {
         if (previousState != null) {
             stateTransitions.get(previousState).add(newState);
@@ -60,7 +81,11 @@ public class Process<S extends Comparable<S>> {
         }
         return sb.toString();
     }
-
+    /**
+     * Método que cuenta los estados siguientes
+     * @param nextStateList Lista de estados siguientes
+     * @return Estados siguientes
+     */
     private Map<S, Integer> countNextStates(List<S> nextStateList) {
         Map<S, Integer> nextStateCounts = new HashMap<>();
         for (S nextState : nextStateList) {
@@ -68,7 +93,11 @@ public class Process<S extends Comparable<S>> {
         }
         return nextStateCounts;
     }
-
+    /**
+     * Método auxiliar del tostring que añade los estados siguientes
+     * @param sb StringBuilder
+     * @param nextStateCounts Estados siguientes
+     */
     private void appendNextStateCounts(StringBuilder sb, Map<S, Integer> nextStateCounts) {
         for (Map.Entry<S, Integer> entry : nextStateCounts.entrySet()) {
             sb.append(" to state ")
