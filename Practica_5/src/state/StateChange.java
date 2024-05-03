@@ -1,4 +1,4 @@
-package Practica_5.src.otros;
+package state;
 
 import java.time.*;
 
@@ -26,7 +26,7 @@ public class StateChange <S extends Comparable<S>> {
             return "(in: "+this.newState+" at: "+this.time+")";
         }
         else {
-            return "(from: "+this.oldState+" to: "+this.newState+" at: "+this.time+")";
+            return "(from: "+this.oldState+" to "+this.newState+" at: "+this.time+")";
         }
     }
 }

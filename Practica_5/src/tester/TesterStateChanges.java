@@ -1,15 +1,9 @@
-package Practica_5.src.tester;
+package tester;
 
-import Practica_5.src.otros.*;
-
-import static Practica_5.src.otros.RegistrationKind.*;
-import static Practica_5.src.otros.RegistrationState.PAYED;
-import static Practica_5.src.otros.RegistrationState.STARTED;
-import static Practica_5.src.otros.RegistrationState.FILLED;
-import static Practica_5.src.otros.RegistrationState.VALIDATED;
-import static Practica_5.src.otros.RegistrationState.FINISHED;
-import static Practica_5.src.otros.RegistrationState.REJECTED;
-
+import state.*;
+import registration.*;
+import static registration.RegistrationKind.*;
+import static registration.RegistrationState.*;
 
 
 public class TesterStateChanges {
