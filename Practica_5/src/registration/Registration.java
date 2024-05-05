@@ -29,6 +29,12 @@ public class Registration {
     }
 
     /**
+     * Método que devuelve el nombre
+     * @return Nombre
+     */
+    public String getName () {return this.name;}
+
+    /**
      * Método que devuelve la cantidad pagada del registro
      * @return Cantidad pagada
      */
