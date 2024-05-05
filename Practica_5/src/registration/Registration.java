@@ -87,7 +87,6 @@ public class Registration {
      */
     public static void withTracker(StateIterable observer) {
         observers.add(observer);
-
     }
     /**
      * Método que notifica a los objetos monitorizadores

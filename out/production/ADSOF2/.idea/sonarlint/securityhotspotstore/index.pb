@@ -43,3 +43,5 @@ Z
 +Practica_5/src/otros/RegistrationState.java,7\0\70810df5a4d1e03b01408569a0781947a7851f7a
 U
 %Practica_5/src/otros/StateChange.java,0\d\0d8ac2449b81df233e198317011da9104971444e
+O
+Practica_4/src/block/Block.java,0\8\085129de13126af4531955d50369c2f9cb63a556

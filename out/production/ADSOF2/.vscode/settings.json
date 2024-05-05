@@ -1,7 +1,8 @@
 {
     "java.project.sourcePaths": [
         ".",
-        "Practica_4/src"
+        "Practica_4/src",
+        "Practica_5/src"
     ],
     "java.project.referencedLibraries": []
 }
