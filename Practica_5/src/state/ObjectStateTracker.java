@@ -79,7 +79,7 @@ public class ObjectStateTracker<T, S extends Enum<S>> implements Iterable<T>, St
      * @param element Objeto
      */
     private void updateStates(T element) {
-        S currentState = this.elementStates.get(element);
+        S currentState = this.elementStates.get(element);        
         for (Map.Entry<Predicate<T>, S> entry : this.conditions.entrySet()) {
             if (entry.getKey().test(element)) {
                 S newState = entry.getValue();
